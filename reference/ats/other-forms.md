@@ -7,6 +7,7 @@
 - **Viterbit:** setter works. City dropdown: click dropdown → click its search box separately (first typing swallowed) → type only the part of the name with no non-ASCII letters → click option. Reject cookies: `s-rall-bn`.
 - **select2-style widgets (e.g. In4Matic):** `option.selected=true`+`change` leaves the placeholder visible = not selected → real clicks.
 - **BambooHR (content):** read "Minimum Experience" (e.g. Manager/Supervisor) at the end of `get_page_text` — the employer's own seniority tag.
+- **BambooHR (form), measured 9 Oct 2026:** "Apply for This Job" opens the form on the same page. Tenants can make Address, City, Province and Postal Code all required, so a profile without a street and postcode cannot finish it. The file input is hidden: give it an id, make it visible, then `file_upload`. Country is a custom select that may already show the right country. A honeypot text field ("Please leave this field blank", far off-screen) sits first in the DOM; never fill it. The visible reCAPTCHA makes every BambooHR form a hand-off anyway.
 
 ## JobDiva (staffing-agency portals, `*.jobdiva.com/portal`)
 
@@ -20,6 +21,10 @@
 ## Getro VC job boards (`*.getro.com/companies/<co>/jobs/<id>`)
 
 - "Apply now" opens a modal that requires a LinkedIn URL before it reveals the employer's link, and submitting it makes the profile visible to the fund's portfolio companies. That is a talent-network opt-in the candidate has not given: hand off, or find the employer's own ATS. Measured 2 Oct.
+
+## Mantu careers (`careers.mantu.com/brands/<brand>/jobs/<id>`, Amaris Consulting and the other Mantu brands)
+
+- One-page form under the posting: first name, surname, email, phone (intl-tel-input, detects the country from a `+` number; the "between 0 and 15 digits" line under it is help text, not an error), a required résumé upload (`input[name=resume]`, `file_upload` works) and a required box "I agree to Mantu's Terms and Conditions and the Privacy Policy". That box is a terms acceptance: fill everything else and hand off. Invisible reCAPTCHA v3 badge only. The posting header carries the job's working language ("Permanent Job · Turkish"), which settles a language question the English description leaves open. Cookie banner: "Deny". Measured 10 Oct 2026.
 
 ## Microsoft (`apply.careers.microsoft.com`)
 
