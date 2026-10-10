@@ -4,6 +4,63 @@ The version is the git tag; there is no version file. Each release is also on
 [the releases page](https://github.com/selfishprimate/seekter/releases) with the
 same text.
 
+## v0.6.0 — 10 October 2026
+
+Doğan Can Karataş's second set of runs in Turkey (#45): a new application
+system, two forms that end in a hand-off, and Kariyer.net from a logged-in
+account. Plus one thing Lever does on its own.
+
+### New: Peoplise
+
+A Turkish recruiting platform used by banks and large employers
+(`live.peoplise.com/<co>/Application/...`). The landing page is already the
+first step of the form, and all three legal checkboxes on it are enforced
+although none is marked required. On one bank tenant the third one shares the
+candidate's data with the parent holding company. That is not the
+application's own consent, so Seekter fills the rest and hands the posting
+back to you.
+
+### Mantu careers and BambooHR end in a hand-off
+
+- **Mantu careers** (`careers.mantu.com`, Amaris and the other Mantu brands)
+  has a required "I agree to Mantu's Terms and Conditions" box. That is a terms
+  acceptance, so it is yours. The posting header names the job's working
+  language, which settles a question the English description can leave open.
+- **BambooHR** tenants can require a street address and postcode, and a
+  honeypot field sits first in the form; it is never filled. The visible
+  reCAPTCHA makes every BambooHR form a hand-off anyway.
+
+### Kariyer.net from a logged-in account
+
+Measured on 9 and 10 Oct:
+
+- Logged in, `fetch()` returns an empty page shell for postings and searches.
+  Navigate to each page instead.
+- The search is not a title search: a work-model word in the keywords empties
+  the list, and `node.js` finds 2 cards where `node` finds 16. Filter the cards
+  on your own `title_keep`.
+- Some postings are open only to candidates with a disability and say so only
+  when you submit. Nothing is sent; it is recorded as a skip.
+- Some employers add a data-consent box under their questions. It is ticked
+  only when your profile gives consent for application data; otherwise the
+  posting is handed back. Postings under one group account count as one company
+  for the same-company window.
+- With the Chrome window in the background, coordinate clicks land nowhere.
+  The notes say how to submit and confirm anyway.
+
+### Lever already knows you applied
+
+A posting you applied to by hand, before Seekter tracked anything, lands on
+Lever's `/already-received` page after submit, with the date of your earlier
+application, and nothing new is sent. Measured 9 Oct on an application from
+six months earlier. Seekter now records it as applied on that date instead of
+treating it as an error.
+
+### Upgrading
+
+Nothing to migrate. Your `profile/`, `applications/` and `runs/` are
+git-ignored and untouched.
+
 ## v0.5.0 — 9 October 2026
 
 Two sources that need no browser: the job boards of the companies you would
