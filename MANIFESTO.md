@@ -39,3 +39,5 @@ Seekter doesn't promise interviews or offers. It takes the repetitive part of ap
 It is not a way to apply to everything. It is not a tool for fooling a recruiter or an applicant tracking system. And it is not a fight with the people who hire. On the other side of every form is someone doing a hard job with too many applications, and Seekter tries not to add to that pile.
 
 If you think the kit breaks one of these principles, open an issue. That is the most useful thing you can send.
+
+What we ask of the platforms in return, and what a candidate's agent should promise them, is in the [open call](OPEN-CALL.md).
