@@ -87,3 +87,16 @@ First measured 23 Oct 2026. No account. The LinkedIn apply link is a redirect th
 - A small Turkish agency ATS; LinkedIn's offsite apply URL points straight at the job page. The page's own "Easy Apply" button (no relation to LinkedIn's) opens `?tab=upload_cv` on the same page: first name, last name, phone (`+90` picker, national number, rendered spaced), email, a dropzone with a hidden `input[type=file]` (expose it and upload through `file_upload`), and one required data-processing consent for the application. Step 2 is "Application Questions". No account is asked for up front. Measured 22 Oct 2026.
 - **The email is checked only on Continue.** If the address already has a Recruitcrafts account (the candidate applied to another posting of the same agency before), Continue answers "This email is already registered in the system. Please log in and apply again." and the questions never open. That is a sign-in wall: hand off, and tell the candidate which PDF to upload after signing in. Check the tracker for earlier postings from the same employer on this ATS before filling the form, because the hand-off is likely.
 - The ref click on "Easy Apply" did nothing; a coordinate click opened the form.
+
+## Cezanne HR recruitment (`recruitment.cezannehr.com/job/application/<slug>`, formerly Occupop)
+
+- Old `api.occupop.com/job/application/<slug>` links redirect here, and `live.mjs` answers UNKNOWN for them; read the page instead. The page renders in the browser's language, so headings and buttons may not be in English ("Uygulama" for the Application tab).
+- One page behind the posting's Application tab: first and last name, email, LinkedIn, phone (flag picker already on the home country from the browser locale; type the national number after the `+<code>`), a location autocomplete (type the city, click the first row), the employer's own required text questions as plain inputs (`question_0`…), CV upload, a referral radio and an optional cover letter. Real typing works everywhere. Measured 26 Oct 2026.
+- **The cover letter box is a rich-text `DIV`, not a textarea**, and `find` returns a ref that typing does not reach: the text went nowhere. A coordinate click inside the box, then real typing, filled it.
+- No consent box: a line under the form says applying accepts the privacy policy. Success is a modal with a one-line confirmation and an OK button.
+
+## cord (`cord.com/u/<company>/jobs/<id>-<slug>`)
+
+- Not an application form. A cord job page has no Apply: the only action is "Message <hiring manager>", which starts a chat on cord under the candidate's own cord account. Seekter never sends messages for the candidate, so a cord posting is the candidate's to pursue or skip; don't log it as an account wall that can be filled after a sign-in. Measured 27 Oct 2026.
+- Before the message can be sent, cord asks the candidate about visa eligibility for the role's region (EU on a London posting, measured 27 Oct 2026). A candidate without it cannot reach the hiring manager at all, so "Visa sponsorship: Not available" in the Logistics block is a hard closer, not a question to raise in the message.
+- The page's Logistics block carries the closers in plain text ("Visa sponsorship: Not available", "Remote working: Hybrid…", the salary band). Read it before handing anything over.
