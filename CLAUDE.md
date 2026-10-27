@@ -8,6 +8,7 @@ Seekter is a job-search agent that runs inside Claude Code: it searches job sour
 |---|---|---|
 | `.claude/skills/seekter-*/SKILL.md` | The six commands: `/seekter-init`, `/seekter-run`, `/seekter-log`, `/seekter-interview`, `/seekter-report`, `/seekter-git` | tracked |
 | `reference/sources/` | One file per job source: `_core.md` (always read) plus `your-links.md`, `freehire.md`, `linkedin.md` (alert emails; read-only mode with limits), one per board, `inbox.md` | tracked |
+| `reference/employers/` | `catalog.json`, the shared list of companies Seekter can read directly, with where each one hires; `README.md` says what may go in (public facts only) | tracked |
 | `reference/ats/` | One file per application form system: `_core.md` (universal rules, the identify table, the hand-off list) plus `greenhouse.md`, `ashby.md`, `workday.md`, `lever.md`… | tracked |
 | `templates/` | Profile and search-config templates that `/seekter-init` fills | tracked |
 | `scripts/seekter.mjs` | Tracker CLI: check, check-many, add, move, list, index, stats (`--by <field>` breaks sent, replies and interviews down by source, form system, title, fit…) | tracked |
@@ -17,6 +18,7 @@ Seekter is a job-search agent that runs inside Claude Code: it searches job sour
 | `scripts/claims.mjs` | Holds a cover letter or free-text answer to the profile before it goes into a form: numbers not in the facts, banned phrases, sentences already sent to another company | tracked |
 | `scripts/providers/` | One file per application system the watchlist reads (Greenhouse, Ashby, Lever, Workable, SmartRecruiters, Recruitee, Personio, Teamtailor, Workday, PeopleForce, Pinpoint); the contract is in its README | tracked |
 | `scripts/resume.mjs` | Resume engine: one master resume (`profile/resume/json/resume.json`: facts, a tagged bullet pool, resume types) printed per type into `profile/resume/` by the local Chrome; `validate` holds it to the profile. Look in `templates/resume/resume.css` | tracked |
+| `scripts/catalog.mjs` | The shared lists `/seekter-init` shows: job platforms (`reference/sources/platforms.json`) and companies hiring from their own career sites (`reference/employers/catalog.json`), filtered to one candidate's country and field; `--add` writes the companies to the watchlist | tracked |
 | `scripts/import_csv.mjs` | One-off import of an existing tracker (Notion/Sheets CSV) | tracked |
 | `npm/` | The `seekter` npm package: `npx seekter init` downloads the newest release into a new folder. Only the way in, not part of the kit; kept out of release archives by `.gitattributes`. Published by hand from this folder: `node npm/sync-readme.mjs` (the npm page shows the repository README, links made absolute; a test fails while the copy is stale), raise the version in `npm/package.json`, then `npm publish` | tracked |
 | `tests/seekter.test.mjs` | Tracker CLI and sweep tests, no packages, throwaway repo per case: `node --test tests/seekter.test.mjs`. Run it after any change to `scripts/` | tracked |

@@ -54,3 +54,5 @@ JSON.parse(document.body.innerText).jobs.filter(x=>/design/i.test(x.title))
 - **When you find a strong company, check its whole careers page.** LinkedIn doesn't show every posting. If it is worth checking twice, it is worth a row in `employers`.
 - `jobs.siemens.com` ("Careers Marketplace") is a single-employer portal covering Siemens AG + Healthineers. Monthly check. The session drops silently mid-flow, so verify the session after each step.
 - Workday: after applying, check Candidate Home "Suggested Jobs"; `/apply/useMyLastApplication` makes repeat applications cheap.
+
+**The shared catalog.** `reference/employers/catalog.json` holds companies already verified on a system above, with where each one hires; `/seekter-init` offers the ones that fit the candidate (`scripts/catalog.mjs employers`). A company worth adding for everyone goes there as well as into one candidate's `employers`, following the rules in `reference/employers/README.md`.

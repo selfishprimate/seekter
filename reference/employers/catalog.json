@@ -1,0 +1,2657 @@
+[
+ {
+  "name": "AI Digest",
+  "ats": "ashby",
+  "slug": "aidigest",
+  "scope": [
+   "remote"
+  ],
+  "sectors": [
+   "ai"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote, no region stated",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Airalo",
+  "ats": "lever",
+  "slug": "airalo",
+  "scope": [
+   "europe"
+  ],
+  "countries": [
+   "GB",
+   "ES"
+  ],
+  "sectors": [
+   "telecom"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "UK and Spain remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Amplemarket",
+  "ats": "greenhouse",
+  "slug": "amplemarket",
+  "scope": [
+   "emea",
+   "americas"
+  ],
+  "tz": "GMT-3..GMT+3 for EMEA roles",
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote EMEA, LATAM and US",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Articulate",
+  "ats": "lever",
+  "slug": "articulate",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "edtech"
+  ],
+  "note": "Directory lists worldwide; current roles are US",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Assured",
+  "ats": "ashby",
+  "slug": "assured",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "health"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote, US-based",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Attio",
+  "ats": "ashby",
+  "slug": "attio",
+  "scope": [
+   "europe",
+   "offices"
+  ],
+  "countries": [
+   "GB",
+   "PL",
+   "PT",
+   "IE",
+   "US"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Hybrid London/NY/SF plus remote UK, Poland, Portugal, Ireland",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Automattic",
+  "ats": "greenhouse",
+  "slug": "automatticcareers",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Fully remote, worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Berlin Bytes",
+  "ats": "personio",
+  "slug": "berlin-bytes",
+  "scope": [
+   "remote"
+  ],
+  "sectors": [
+   "agency"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote freelance pool",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Bitwarden",
+  "ats": "greenhouse",
+  "slug": "bitwarden",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "US",
+   "GB",
+   "IN"
+  ],
+  "sectors": [
+   "security"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote roles in the US and UK, office in Noida",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Brave",
+  "ats": "greenhouse",
+  "slug": "brave",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Anywhere, North America, EU, UK",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Buffer",
+  "ats": "ashby",
+  "slug": "buffer",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "note": "Fully remote, worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "C Teleport",
+  "ats": "teamtailor",
+  "slug": "careers.cteleport.com",
+  "scope": [
+   "europe-tz"
+  ],
+  "tz": "CET±3",
+  "sectors": [
+   "travel"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Fully remote within about 3 hours of CET",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Calibre",
+  "ats": "ashby",
+  "slug": "calibre",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Hires in countries Remote.com supports",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Canals",
+  "ats": "ashby",
+  "slug": "canals",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "US and Brazil",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Canonical",
+  "ats": "greenhouse",
+  "slug": "canonical",
+  "scope": [
+   "worldwide",
+   "emea"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Home based, worldwide or EMEA per role",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Capchase",
+  "ats": "ashby",
+  "slug": "capchase",
+  "scope": [
+   "europe-tz",
+   "americas"
+  ],
+  "tz": "CEST±2",
+  "sectors": [
+   "fintech"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Technical hires within CEST ±2 h, plus US and LATAM",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Chainguard",
+  "ats": "greenhouse",
+  "slug": "chainguard",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "US",
+   "GB",
+   "CA",
+   "DE",
+   "IN",
+   "SG"
+  ],
+  "sectors": [
+   "security"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote in listed countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Circle",
+  "ats": "ashby",
+  "slug": "circle",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "crypto",
+   "fintech"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Anywhere (Remote), some EMEA",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "CircleCI",
+  "ats": "greenhouse",
+  "slug": "circleci",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "US and Canada",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Clera",
+  "ats": "ashby",
+  "slug": "clera",
+  "scope": [
+   "offices",
+   "remote"
+  ],
+  "sectors": [
+   "recruiting"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Talent pool: on-site SF, Berlin, Munich, Vienna plus some remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "ClickUp",
+  "ats": "ashby",
+  "slug": "clickup",
+  "scope": [
+   "americas",
+   "europe"
+  ],
+  "countries": [
+   "US",
+   "CA",
+   "IE",
+   "PL",
+   "BG"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "US remote, Dublin office, some European countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Clio",
+  "ats": "workday",
+  "slug": "clio.wd3/ClioCareerSite",
+  "scope": [
+   "offices"
+  ],
+  "countries": [
+   "CA",
+   "US",
+   "IE"
+  ],
+  "sectors": [
+   "legaltech"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Office roles in Canada, US and Dublin",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Close",
+  "ats": "ashby",
+  "slug": "close",
+  "scope": [
+   "americas"
+  ],
+  "tz": "US business hours",
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "US remote; directory says worldwide with US overlap",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Cloudera",
+  "ats": "workday",
+  "slug": "cloudera.wd5/External_Career",
+  "scope": [
+   "offices"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Office and hybrid roles worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "CloudTalk",
+  "ats": "workable",
+  "slug": "cloudtalk",
+  "scope": [
+   "europe"
+  ],
+  "countries": [
+   "CZ",
+   "SK",
+   "ES",
+   "PT",
+   "PL",
+   "MK"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "design"
+  ],
+  "note": "Remote in listed European countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "CodePath",
+  "ats": "greenhouse",
+  "slug": "codepath",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "edtech"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote, mostly United States",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Codeway",
+  "ats": "ashby",
+  "slug": "codeway",
+  "scope": [
+   "offices"
+  ],
+  "countries": [
+   "TR",
+   "ES"
+  ],
+  "sectors": [
+   "consumer apps"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Istanbul and Barcelona offices",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Collabora",
+  "ats": "lever",
+  "slug": "collabora",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Fully remote, worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Consensys",
+  "ats": "greenhouse",
+  "slug": "consensys",
+  "scope": [
+   "emea",
+   "americas"
+  ],
+  "sectors": [
+   "crypto"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote EMEA, US, LATAM",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Constructor",
+  "ats": "ashby",
+  "slug": "constructor",
+  "scope": [
+   "worldwide",
+   "emea",
+   "americas"
+  ],
+  "sectors": [
+   "ecommerce"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote, EMEA, AMER",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Contentful",
+  "ats": "greenhouse",
+  "slug": "contentful",
+  "scope": [
+   "offices"
+  ],
+  "countries": [
+   "GB",
+   "US",
+   "DE",
+   "AU"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Office roles",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Contra",
+  "ats": "ashby",
+  "slug": "contra",
+  "scope": [
+   "offices"
+  ],
+  "countries": [
+   "US"
+  ],
+  "sectors": [
+   "marketplace"
+  ],
+  "note": "New York and San Francisco",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Cresta",
+  "ats": "greenhouse",
+  "slug": "cresta",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "US",
+   "GB",
+   "AU",
+   "CA",
+   "DE"
+  ],
+  "sectors": [
+   "ai"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote in listed countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Dashlane",
+  "ats": "greenhouse",
+  "slug": "dashlane",
+  "scope": [
+   "offices"
+  ],
+  "countries": [
+   "FR",
+   "US",
+   "PT"
+  ],
+  "sectors": [
+   "security"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Paris, New York, Lisbon",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Databento",
+  "ats": "greenhouse",
+  "slug": "databento",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "fintech"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote, global",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Docker",
+  "ats": "ashby",
+  "slug": "docker",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "US and Canada remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Donorbox",
+  "ats": "greenhouse",
+  "slug": "donorbox",
+  "scope": [
+   "europe",
+   "americas"
+  ],
+  "sectors": [
+   "nonprofit tech"
+  ],
+  "note": "Remote Europe and Latin America",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "DuckDuckGo",
+  "ats": "ashby",
+  "slug": "duck-duck-go",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Fully remote, worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Elastic",
+  "ats": "greenhouse",
+  "slug": "elastic",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "US",
+   "ES",
+   "CA",
+   "GR",
+   "GB",
+   "IE",
+   "PT",
+   "NL",
+   "DE",
+   "FR"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote in listed countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "ElevenLabs",
+  "ats": "ashby",
+  "slug": "elevenlabs",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "ai"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote, many countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Ergeon",
+  "ats": "greenhouse",
+  "slug": "ergeon",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "construction tech"
+  ],
+  "note": "Employees worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "EWOR",
+  "ats": "teamtailor",
+  "slug": "eworgmbh.teamtailor.com",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "edtech"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Fully remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Fingerprint",
+  "ats": "greenhouse",
+  "slug": "fingerprint",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "security"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Fully remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Finom",
+  "ats": "lever",
+  "slug": "pnlfin",
+  "scope": [
+   "europe"
+  ],
+  "countries": [
+   "ES",
+   "PL",
+   "NL",
+   "CY",
+   "RS",
+   "PT",
+   "TR"
+  ],
+  "sectors": [
+   "fintech"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote in Europe; also hires in Türkiye",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "fleetio",
+  "ats": "greenhouse",
+  "slug": "fleetio",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "US, Canada, Mexico",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Flex",
+  "ats": "greenhouse",
+  "slug": "flex",
+  "scope": [
+   "worldwide",
+   "offices"
+  ],
+  "countries": [
+   "US"
+  ],
+  "sectors": [
+   "fintech"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote - Global plus US offices",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Fueled",
+  "ats": "greenhouse",
+  "slug": "fueledcareers",
+  "scope": [
+   "americas",
+   "emea"
+  ],
+  "sectors": [
+   "agency"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote, Americas or EMEA per role",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Ghost",
+  "ats": "greenhouse",
+  "slug": "ghost",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "note": "Fully remote, worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "GitLab",
+  "ats": "greenhouse",
+  "slug": "gitlab",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "US",
+   "CA",
+   "GB",
+   "DE",
+   "PL",
+   "NL",
+   "IE",
+   "IN"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote in countries where GitLab can employ",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Grafana Labs",
+  "ats": "greenhouse",
+  "slug": "grafanalabs",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "US",
+   "CA",
+   "SE",
+   "ES",
+   "GB",
+   "DE"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote in listed countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Gruntwork",
+  "ats": "ashby",
+  "slug": "gruntwork",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "note": "Fully remote, worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Haut.AI",
+  "ats": "ashby",
+  "slug": "haut-ai",
+  "scope": [
+   "europe"
+  ],
+  "sectors": [
+   "ai"
+  ],
+  "seen": [
+   "design"
+  ],
+  "note": "Fully remote across UK and Europe",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Help Scout",
+  "ats": "ashby",
+  "slug": "helpscout",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "design"
+  ],
+  "note": "US remote; directory says worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Hospitable",
+  "ats": "workable",
+  "slug": "hospitable",
+  "scope": [
+   "europe-tz",
+   "americas"
+  ],
+  "tz": "Europe or US up to East Coast",
+  "sectors": [
+   "travel"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote-only, hires by time zone",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Hostinger",
+  "ats": "ashby",
+  "slug": "hostinger",
+  "scope": [
+   "europe",
+   "offices"
+  ],
+  "countries": [
+   "LT",
+   "PL",
+   "FR"
+  ],
+  "sectors": [
+   "hosting"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Vilnius/Kaunas offices plus remote in some EU countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Hugging Face",
+  "ats": "workable",
+  "slug": "huggingface",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "FR",
+   "US"
+  ],
+  "sectors": [
+   "ai"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote, mostly France and US",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "IFS",
+  "ats": "smartrecruiters",
+  "slug": "IFS1",
+  "scope": [
+   "offices"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Office roles worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Insense",
+  "ats": "teamtailor",
+  "slug": "insense.na.teamtailor.com",
+  "scope": [
+   "remote"
+  ],
+  "sectors": [
+   "marketing tech"
+  ],
+  "note": "Fully remote (Malta-registered)",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Intermedia",
+  "ats": "pinpoint",
+  "slug": "intermedia",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "PT",
+   "GB",
+   "US"
+  ],
+  "sectors": [
+   "telecom"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Fully remote in Portugal, UK, US",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Karat",
+  "ats": "greenhouse",
+  "slug": "karat",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "IN",
+   "US",
+   "MX"
+  ],
+  "sectors": [
+   "recruiting"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote in listed countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Kestra",
+  "ats": "ashby",
+  "slug": "kestra",
+  "scope": [
+   "europe",
+   "americas"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote Europe and US",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Kettle",
+  "ats": "greenhouse",
+  "slug": "kettle",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "insurtech"
+  ],
+  "seen": [
+   "design"
+  ],
+  "note": "US remote and offices",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Khan Academy",
+  "ats": "greenhouse",
+  "slug": "khanacademy",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "edtech"
+  ],
+  "note": "US remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Kinsta",
+  "ats": "lever",
+  "slug": "kinsta",
+  "scope": [
+   "worldwide",
+   "offices"
+  ],
+  "countries": [
+   "HU",
+   "PH"
+  ],
+  "sectors": [
+   "hosting"
+  ],
+  "seen": [
+   "design"
+  ],
+  "note": "Team on every continent; Budapest and Manila",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Kona",
+  "ats": "greenhouse",
+  "slug": "kona",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "note": "Worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Kraken",
+  "ats": "ashby",
+  "slug": "kraken.com",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "crypto"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote across many countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Labelbox",
+  "ats": "greenhouse",
+  "slug": "labelbox",
+  "scope": [
+   "americas",
+   "offices"
+  ],
+  "countries": [
+   "US",
+   "IN"
+  ],
+  "sectors": [
+   "ai"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "SF Bay Area and remote US/India",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Linear",
+  "ats": "ashby",
+  "slug": "linear",
+  "scope": [
+   "americas",
+   "europe",
+   "apac"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote by region: North America, Europe, APAC",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Luxor Technology",
+  "ats": "ashby",
+  "slug": "luxor",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "crypto"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Worldwide remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Mattermost",
+  "ats": "greenhouse",
+  "slug": "mattermost",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "US and Canada",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Maze",
+  "ats": "ashby",
+  "slug": "mazehq",
+  "scope": [
+   "europe",
+   "americas"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote Europe or US",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "mediasmart",
+  "ats": "greenhouse",
+  "slug": "mediasmart",
+  "scope": [
+   "europe"
+  ],
+  "countries": [
+   "ES"
+  ],
+  "sectors": [
+   "adtech"
+  ],
+  "note": "Europe, Spain preferred",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Medsien",
+  "ats": "greenhouse",
+  "slug": "medsien",
+  "scope": [
+   "americas",
+   "offices"
+  ],
+  "countries": [
+   "US",
+   "TR"
+  ],
+  "sectors": [
+   "health"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote US plus Istanbul",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Metabase",
+  "ats": "lever",
+  "slug": "metabase",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Global remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Miaplaza",
+  "ats": "recruitee",
+  "slug": "miaplaza",
+  "scope": [
+   "remote"
+  ],
+  "sectors": [
+   "edtech"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Mintos",
+  "ats": "teamtailor",
+  "slug": "mintos.teamtailor.com",
+  "scope": [
+   "offices"
+  ],
+  "countries": [
+   "LV",
+   "DE",
+   "LT"
+  ],
+  "sectors": [
+   "fintech"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Riga and Berlin, hybrid",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "MLabs",
+  "ats": "workable",
+  "slug": "mlabs",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "NL",
+   "DE",
+   "ES",
+   "PT",
+   "PL",
+   "US",
+   "GB",
+   "FR"
+  ],
+  "sectors": [
+   "ai"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote in listed countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Modash",
+  "ats": "workable",
+  "slug": "modash",
+  "scope": [
+   "europe"
+  ],
+  "countries": [
+   "EE",
+   "LT",
+   "CZ",
+   "RO",
+   "DE"
+  ],
+  "sectors": [
+   "marketing tech"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote in European countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Molecule",
+  "ats": "ashby",
+  "slug": "molecule",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "biotech"
+  ],
+  "seen": [
+   "design"
+  ],
+  "note": "Anywhere (Remote)",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Mozilla",
+  "ats": "greenhouse",
+  "slug": "mozilla",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "DE",
+   "CA",
+   "US",
+   "GB",
+   "FR"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote in listed countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Mural",
+  "ats": "ashby",
+  "slug": "mural",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "US, Canada, Argentina",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "n8n",
+  "ats": "ashby",
+  "slug": "n8n",
+  "scope": [
+   "europe",
+   "offices"
+  ],
+  "countries": [
+   "DE"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Berlin office plus remote in European countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Neptune Software",
+  "ats": "personio",
+  "slug": "neptune-software",
+  "scope": [
+   "europe"
+  ],
+  "countries": [
+   "ES",
+   "FR",
+   "PT",
+   "NO"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design"
+  ],
+  "note": "Remote in European countries, Oslo office",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Netlify",
+  "ats": "greenhouse",
+  "slug": "netlify",
+  "scope": [
+   "remote"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "note": "Remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Octopus Deploy",
+  "ats": "greenhouse",
+  "slug": "octopusdeploy",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "note": "UK, US, AU/NZ, Europe",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Omnipresent",
+  "ats": "workable",
+  "slug": "omnipresent-group",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "hr tech"
+  ],
+  "note": "Based anywhere, remote worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "OpenZeppelin",
+  "ats": "greenhouse",
+  "slug": "openzeppelin",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "crypto"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote, worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "OutSystems",
+  "ats": "workday",
+  "slug": "outsystems.wd503/OutSystems",
+  "scope": [
+   "offices",
+   "remote"
+  ],
+  "countries": [
+   "PT",
+   "US",
+   "IN",
+   "GB",
+   "JP"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote Portugal/US plus offices",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Oyster",
+  "ats": "ashby",
+  "slug": "oyster",
+  "scope": [
+   "worldwide",
+   "emea"
+  ],
+  "sectors": [
+   "hr tech"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Any location (remote)",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "P2P.org",
+  "ats": "ashby",
+  "slug": "p2p.org",
+  "scope": [
+   "worldwide",
+   "europe"
+  ],
+  "sectors": [
+   "crypto"
+  ],
+  "seen": [
+   "design"
+  ],
+  "note": "Worldwide and Europe remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Paddle",
+  "ats": "ashby",
+  "slug": "paddle",
+  "scope": [
+   "europe"
+  ],
+  "countries": [
+   "GB",
+   "PT",
+   "IE",
+   "NL"
+  ],
+  "sectors": [
+   "fintech"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote UK, Portugal, Ireland, Netherlands",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Partly",
+  "ats": "ashby",
+  "slug": "partly.com",
+  "scope": [
+   "offices"
+  ],
+  "countries": [
+   "NZ",
+   "US",
+   "GB"
+  ],
+  "sectors": [
+   "automotive"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Christchurch, Auckland, Austin, London",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Pencil",
+  "ats": "ashby",
+  "slug": "pencil",
+  "scope": [
+   "emea",
+   "americas"
+  ],
+  "sectors": [
+   "ai"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote EMEA, UK, LATAM",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Percona",
+  "ats": "ashby",
+  "slug": "percona",
+  "scope": [
+   "emea",
+   "americas"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote EMEA and Americas",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Plane",
+  "ats": "ashby",
+  "slug": "plane",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "US",
+   "IN",
+   "CA",
+   "IT",
+   "GB",
+   "DE"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote in listed countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Pleo",
+  "ats": "ashby",
+  "slug": "pleo",
+  "scope": [
+   "offices"
+  ],
+  "countries": [
+   "GB",
+   "PT",
+   "NL",
+   "DK",
+   "DE",
+   "ES"
+  ],
+  "sectors": [
+   "fintech"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Hybrid European offices",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "PostHog",
+  "ats": "ashby",
+  "slug": "posthog",
+  "scope": [
+   "worldwide"
+  ],
+  "tz": "North America or Europe time zones",
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote, worldwide with NA/EU time zones",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Prisma",
+  "ats": "greenhouse",
+  "slug": "prisma",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "note": "Worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Proton",
+  "ats": "greenhouse",
+  "slug": "proton",
+  "scope": [
+   "offices"
+  ],
+  "countries": [
+   "CH",
+   "FR",
+   "ES",
+   "MK"
+  ],
+  "sectors": [
+   "privacy"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Geneva, Paris, Barcelona, Skopje",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Railway",
+  "ats": "ashby",
+  "slug": "railway",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Global remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Raycast",
+  "ats": "ashby",
+  "slug": "raycast",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "note": "Worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Reedsy",
+  "ats": "ashby",
+  "slug": "reedsy",
+  "scope": [
+   "europe"
+  ],
+  "countries": [
+   "GB",
+   "PL",
+   "BE",
+   "ES",
+   "DE",
+   "IT",
+   "NL",
+   "IE",
+   "PT",
+   "FR"
+  ],
+  "sectors": [
+   "publishing"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote in listed European countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Replit",
+  "ats": "ashby",
+  "slug": "replit",
+  "scope": [
+   "offices"
+  ],
+  "countries": [
+   "US"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Foster City and NYC, hybrid",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Restate",
+  "ats": "ashby",
+  "slug": "restate",
+  "scope": [
+   "europe",
+   "americas"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote Europe and US",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "RootstockLabs",
+  "ats": "greenhouse",
+  "slug": "rootstocklabsltd",
+  "scope": [
+   "europe",
+   "americas"
+  ],
+  "sectors": [
+   "crypto"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote from Europe or South America",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Ruby Labs",
+  "ats": "ashby",
+  "slug": "ruby-labs",
+  "scope": [
+   "europe"
+  ],
+  "countries": [
+   "UA",
+   "MK",
+   "MD",
+   "LV",
+   "TR",
+   "RS",
+   "GE"
+  ],
+  "sectors": [
+   "consumer apps"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote EU, Ukraine, Türkiye and neighbours",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "SafetyWing",
+  "ats": "pinpoint",
+  "slug": "safetywing",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "insurtech"
+  ],
+  "note": "Fully remote, distributed",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Sanity",
+  "ats": "ashby",
+  "slug": "sanity",
+  "scope": [
+   "americas",
+   "offices"
+  ],
+  "countries": [
+   "US",
+   "GB",
+   "NO"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote US plus London and Oslo",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Secfix",
+  "ats": "ashby",
+  "slug": "secfix",
+  "scope": [
+   "europe"
+  ],
+  "tz": "CET/CEST",
+  "sectors": [
+   "security"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote Europe/EMEA, CET hours",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Simple Life App",
+  "ats": "teamtailor",
+  "slug": "jobs.simple.life",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "PL",
+   "AM",
+   "CY",
+   "CO",
+   "PH"
+  ],
+  "sectors": [
+   "health"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote in listed countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Sonatype",
+  "ats": "lever",
+  "slug": "sonatype",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "CO",
+   "US",
+   "IN",
+   "GB",
+   "SG"
+  ],
+  "sectors": [
+   "security"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote in listed countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Sourcegraph",
+  "ats": "greenhouse",
+  "slug": "sourcegraph91",
+  "scope": [
+   "remote"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Status",
+  "ats": "greenhouse",
+  "slug": "status",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "crypto"
+  ],
+  "note": "Worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Storyblok",
+  "ats": "greenhouse",
+  "slug": "storyblok",
+  "scope": [
+   "remote"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Supabase",
+  "ats": "ashby",
+  "slug": "supabase",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote, global",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Surgo Health",
+  "ats": "pinpoint",
+  "slug": "surgohealth",
+  "scope": [
+   "remote",
+   "offices"
+  ],
+  "countries": [
+   "GB",
+   "US",
+   "TR"
+  ],
+  "sectors": [
+   "health"
+  ],
+  "seen": [
+   "design"
+  ],
+  "note": "London, Washington, remote including Istanbul",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Synthesia",
+  "ats": "ashby",
+  "slug": "synthesia",
+  "scope": [
+   "europe",
+   "offices"
+  ],
+  "countries": [
+   "GB",
+   "US",
+   "DE"
+  ],
+  "sectors": [
+   "ai"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote Europe plus London/NYC",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Tabby",
+  "ats": "pinpoint",
+  "slug": "tabby",
+  "scope": [
+   "offices",
+   "remote"
+  ],
+  "countries": [
+   "SA",
+   "AE",
+   "EG",
+   "KW",
+   "RS"
+  ],
+  "sectors": [
+   "fintech"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Gulf offices plus fully remote from Belgrade",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Tailscale",
+  "ats": "greenhouse",
+  "slug": "tailscale",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "US",
+   "CA",
+   "GB"
+  ],
+  "sectors": [
+   "security"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote US, Canada, UK",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "TaxDome",
+  "ats": "peopleforce",
+  "slug": "careers.taxdome.com",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Fully remote team across 40+ countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Temporal",
+  "ats": "ashby",
+  "slug": "temporal",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "US remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Testlio",
+  "ats": "greenhouse",
+  "slug": "testlio",
+  "scope": [
+   "worldwide",
+   "emea",
+   "americas"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote EMEA/AMER; skips high-cost countries for some roles",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "ThriveCart",
+  "ats": "greenhouse",
+  "slug": "thrivecart",
+  "scope": [
+   "remote",
+   "americas",
+   "offices"
+  ],
+  "countries": [
+   "GB"
+  ],
+  "sectors": [
+   "ecommerce"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote, LATAM, US, London hybrid",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Timeleft",
+  "ats": "greenhouse",
+  "slug": "timeleft",
+  "scope": [
+   "europe"
+  ],
+  "sectors": [
+   "consumer apps"
+  ],
+  "note": "Remote Europe",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Tines",
+  "ats": "greenhouse",
+  "slug": "tines",
+  "scope": [
+   "americas",
+   "remote"
+  ],
+  "countries": [
+   "US",
+   "IE"
+  ],
+  "sectors": [
+   "security"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "US and Ireland remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Tiugo Technologies",
+  "ats": "recruitee",
+  "slug": "tiugotech",
+  "scope": [
+   "remote"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote, distributed team",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Tradeify",
+  "ats": "ashby",
+  "slug": "tradeify",
+  "scope": [
+   "worldwide",
+   "emea",
+   "americas"
+  ],
+  "tz": "EMEA overlap for some roles",
+  "sectors": [
+   "trading"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote anywhere, UK, EMEA, Americas",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "TryHackMe",
+  "ats": "teamtailor",
+  "slug": "careers.tryhackme.com",
+  "scope": [
+   "remote"
+  ],
+  "sectors": [
+   "security"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Fully remote, work from anywhere",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "vCluster Labs",
+  "ats": "ashby",
+  "slug": "vClusterLabs",
+  "scope": [
+   "emea",
+   "americas"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote EMEA, US, Canada",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Visit.org",
+  "ats": "workable",
+  "slug": "visit",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "travel"
+  ],
+  "note": "Remote across many countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Walrus Foundation",
+  "ats": "ashby",
+  "slug": "walrus",
+  "scope": [
+   "americas",
+   "europe"
+  ],
+  "sectors": [
+   "crypto"
+  ],
+  "seen": [
+   "design"
+  ],
+  "note": "Remote North America or Europe",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Wayfinder",
+  "ats": "lever",
+  "slug": "project-wayfinder",
+  "scope": [
+   "remote"
+  ],
+  "sectors": [
+   "edtech"
+  ],
+  "seen": [
+   "design"
+  ],
+  "note": "Remote, no country named",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Webflow",
+  "ats": "greenhouse",
+  "slug": "webflow",
+  "scope": [
+   "remote"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "note": "Remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Welltech",
+  "ats": "ashby",
+  "slug": "welltech",
+  "scope": [
+   "remote"
+  ],
+  "countries": [
+   "UA",
+   "CY",
+   "LT",
+   "AM",
+   "BG"
+  ],
+  "sectors": [
+   "health"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote in listed countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "WhiteTech",
+  "ats": "greenhouse",
+  "slug": "whitetech",
+  "scope": [
+   "europe"
+  ],
+  "sectors": [
+   "fintech"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote Europe including non-EEA countries",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Wikimedia",
+  "ats": "greenhouse",
+  "slug": "wikimedia",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "nonprofit"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "WorkWave",
+  "ats": "lever",
+  "slug": "workwave",
+  "scope": [
+   "americas",
+   "offices"
+  ],
+  "countries": [
+   "US",
+   "GB"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "design"
+  ],
+  "note": "Remote US plus UK office",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "WunderGraph",
+  "ats": "ashby",
+  "slug": "WunderGraph",
+  "scope": [
+   "emea",
+   "americas"
+  ],
+  "tz": "CET hours for EMEA",
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote EMEA and US",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Yuno",
+  "ats": "lever",
+  "slug": "yuno",
+  "scope": [
+   "americas",
+   "europe"
+  ],
+  "countries": [
+   "CO",
+   "BR",
+   "ES"
+  ],
+  "sectors": [
+   "fintech"
+  ],
+  "seen": [
+   "engineering"
+  ],
+  "note": "Remote Americas, some Spain",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Zapier",
+  "ats": "ashby",
+  "slug": "zapier",
+  "scope": [
+   "americas",
+   "emea",
+   "apac"
+  ],
+  "sectors": [
+   "saas"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Remote by region",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Zed",
+  "ats": "ashby",
+  "slug": "zed",
+  "scope": [
+   "americas"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "seen": [
+   "design"
+  ],
+  "note": "The Americas",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "ZenRows",
+  "ats": "greenhouse",
+  "slug": "zenrows",
+  "scope": [
+   "worldwide"
+  ],
+  "sectors": [
+   "software"
+  ],
+  "note": "Worldwide",
+  "verified": "2026-10-27"
+ },
+ {
+  "name": "Zocks",
+  "ats": "lever",
+  "slug": "zocks",
+  "scope": [
+   "offices",
+   "americas"
+  ],
+  "countries": [
+   "HU",
+   "US"
+  ],
+  "sectors": [
+   "fintech"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Budapest and Denver, US remote",
+  "verified": "2026-10-27"
+ }
+]
