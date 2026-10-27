@@ -20,6 +20,8 @@ The companies come from `employers` in `profile/settings.json`, one row per comp
 | `recruitee` | `<slug>.recruitee.com` | `<slug>.recruitee.com/api/offers/` |
 | `personio` | `<slug>.jobs.personio.de` (or `.com`) | `<slug>.jobs.personio.de/xml`, then `.com` |
 | `teamtailor` | the career site's host: `<co>.teamtailor.com` or the company's own domain (`jobs.<co>.com`) | `<host>/jobs.rss` |
+| `peopleforce` | the career site's host (`careers.<co>.com`, "Powered by PeopleForce" in the footer) | `<host>/v.json` (a JSON array of open vacancies; the `?source=` tag on each URL is cut) |
+| `pinpoint` | the subdomain, as in `<slug>.pinpointhq.com` | `<slug>.pinpointhq.com/postings.json` (`{data: [...]}`; a made-up subdomain answers 404) |
 | `workday` | `<tenant>.<wdN>/<site>`, read off a posting URL: `cloudera.wd5.myworkdayjobs.com/External_Career` → `cloudera.wd5/External_Career` | `<host>/wday/cxs/<tenant>/<site>/jobs`, one search per `freehire.queries` term, 20 a page, 3 pages |
 
 Each system is one file in `scripts/providers/`, named after the `ats` value; `scripts/providers/README.md` has the three-line contract for adding another.

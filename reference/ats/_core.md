@@ -34,6 +34,7 @@ it. One file per vendor makes that impossible to write, because there is nowhere
 | Peoplise (`live.peoplise.com/<co>/Application/...`) | `peoplise.md` |
 | Personio | `personio.md` |
 | Pinpoint | `pinpoint.md` |
+| PeopleForce (`careers.<co>.com/v/<id>-<slug>`, "Powered by PeopleForce") | `peopleforce.md` |
 | ReachMee | `reachmee.md` |
 | Recruitee | `recruitee.md` |
 | Recruitly | `recruitly.md` |
@@ -84,7 +85,7 @@ Section = vendor name; BambooHR, Revolut and account walls → Hand off; Viterbi
 | `*.homerun.co` | Homerun |
 | `api.dueto.io/Redirect/<id>`, `employer.dueto.io/position/<n>/<co>` | Dueto (`other-forms.md`) |
 | Spanish UI, `s-rall-bn` cookie button | Viterbit |
-| Taleo, SuccessFactors, iCIMS, Worldline, Scalis, haystack.cv | account walls |
+| Taleo, SuccessFactors, iCIMS, Worldline, Scalis, haystack.cv | account walls (iCIMS: once the candidate has signed in the wizard can be filled, see `icims.md`) |
 | `kariyer.garantibbva.com.tr/ilan/<req>/<id>/<slug>` | account wall: "Başvur" opens an email and password sign-in (measured 23 Oct 2026); the other button applies through LinkedIn, which Seekter never uses |
 
 ## Universal rules

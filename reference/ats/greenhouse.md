@@ -54,6 +54,7 @@
       el.dispatchEvent(new MouseEvent(t,{bubbles:true,cancelable:true,view:window}));});
     ```
   - Yes/No lists, fastest: `document.getElementById('question_XXXX').focus();` → `computer type "No"` (list filters to one) → `Return`. Don't use `ArrowDown`+`Enter` without filtering — option 0 is pre-focused, so it picks the SECOND option.
+    **"No" is a substring filter, not a prefix one, so it can land on a Yes.** Measured 26 Oct 2026 on a US work-authorization list whose options were long sentences: typing "No" kept "Yes, I have US Work authorization via a **no**n-immigrant visa…" on top and `Return` selected it. When the options are sentences, type enough of the wanted one to be unique ("No, I am not") and read the visible options before `Return`.
   - Verify every pick via `[class*=singleValue]` / `[class*="select__single-value"]` `innerText` (`input.value` is empty).
   - Never native-set a react-select input (text lands in search → "No options"); clear with `RSET(id,'')` first.
   - A coordinate click elsewhere while a menu is open selects the hovered option → `Escape` first.

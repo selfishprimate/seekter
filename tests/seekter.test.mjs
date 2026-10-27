@@ -851,6 +851,36 @@ describe("employer sweep", () => {
     assert.doesNotMatch(r.out, /problem:/);
   });
 
+  test("a PeopleForce career site is read from its /v.json array", () => {
+    http = fakeHttp(tmp, [
+      ["careers.pf-co.example/v.json", JSON.stringify([
+        { id: 1001, title: "Senior Product Designer", location: null, work_type: null,
+          vacancy_url: "https://careers.pf-co.example/v/1001-senior-product-designer?source=dou" },
+        { id: 1002, title: "Senior Tech Recruiter", location: null, work_type: null,
+          vacancy_url: "https://careers.pf-co.example/v/1002-senior-tech-recruiter?source=dou" }])],
+    ], "{}");
+    const r = sweep([{ name: "Pf", ats: "peopleforce", slug: "careers.pf-co.example" }]);
+    assert.equal(r.rc, 0, r.err);
+    assert.match(r.out, /1 boards, 2 postings → 1 candidates/);
+    assert.match(r.out, /Pf \| Senior Product Designer \|  \| https:\/\/careers\.pf-co\.example\/v\/1001-senior-product-designer$/m);
+    assert.doesNotMatch(r.out, /Recruiter|source=/);
+  });
+
+  test("a Pinpoint site is read from its /postings.json feed", () => {
+    http = fakeHttp(tmp, [
+      ["pp-co.pinpointhq.com/postings.json", JSON.stringify({ data: [
+        { title: "Senior Product Designer ", url: "https://pp-co.pinpointhq.com/en/postings/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+          workplace_type_text: "Remote", location: { city: "Lisbon", name: "Portugal" } },
+        { title: "Customer Support", url: "https://pp-co.pinpointhq.com/en/postings/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+          workplace_type_text: "Onsite", location: { city: "Cairo", name: "Egypt" } }] })],
+    ], "{}");
+    const r = sweep([{ name: "Pp", ats: "pinpoint", slug: "pp-co" }]);
+    assert.equal(r.rc, 0, r.err);
+    assert.match(r.out, /1 boards, 2 postings → 1 candidates/);
+    assert.match(r.out, /Pp \| Senior Product Designer \| Lisbon, Portugal · Remote \| https:\/\/pp-co\.pinpointhq\.com\/en\/postings\/aaaaaaaa/);
+    assert.doesNotMatch(r.out, /Customer Support/);
+  });
+
   test("a Workday slug in the wrong shape is reported, not fetched", () => {
     const r = sweep([{ name: "Wd", ats: "workday", slug: "https://wdco.wd3.myworkdayjobs.com/External" }]);
     assert.match(r.out, /problem: Wd: no board at workday:/);
@@ -897,6 +927,29 @@ describe("live check", () => {
     assert.match(r.out, /^UNKNOWN +https:\/\/careers\.other\.example/m);
     assert.match(r.out, /^UNKNOWN +https:\/\/www\.linkedin\.com.*never called/m);
     assert.ok(!http.urls().some((u) => u.includes("linkedin")));
+  });
+
+  test("a Pinpoint posting is open while it is in the feed", () => {
+    const net = fakeHttp(tmp, [
+      ["pp-co.pinpointhq.com/postings.json", JSON.stringify({ data: [
+        { title: "Product Designer", url: "https://pp-co.pinpointhq.com/en/postings/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa" }] })],
+    ], { status: 500, body: "" });
+    const r = runIn(tmp, "live.mjs", ["https://pp-co.pinpointhq.com/en/postings/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+      "https://pp-co.pinpointhq.com/postings/cccccccc-cccc-cccc-cccc-cccccccccccc"], { env: net.env });
+    assert.equal(r.rc, 0, r.err);
+    assert.match(r.out, /^OPEN +https:\/\/pp-co\.pinpointhq\.com\/en\/postings\/aaaa.* +\(pinpoint\)/m);
+    assert.match(r.out, /^CLOSED +https:\/\/pp-co\.pinpointhq\.com\/postings\/cccc.* +\(pinpoint\)/m);
+  });
+
+  test("a PeopleForce posting is open while its id is in /v.json", () => {
+    const net = fakeHttp(tmp, [
+      ["careers.pf-co.example/v.json", JSON.stringify([{ id: 1001, title: "Product Designer" }])],
+    ], { status: 500, body: "" });
+    const r = runIn(tmp, "live.mjs", ["https://careers.pf-co.example/v/1001-product-designer",
+      "https://careers.pf-co.example/v/111-gone"], { env: net.env });
+    assert.equal(r.rc, 0, r.err);
+    assert.match(r.out, /^OPEN +https:\/\/careers\.pf-co\.example\/v\/1001-product-designer +\(peopleforce\)/m);
+    assert.match(r.out, /^CLOSED +https:\/\/careers\.pf-co\.example\/v\/111-gone +\(peopleforce\)/m);
   });
 
   // Signals a bare 200 or 404 misses: a confidential Lever posting 404s on the public API while
