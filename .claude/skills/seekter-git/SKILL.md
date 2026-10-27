@@ -138,6 +138,11 @@ A dirty tree or a failing test stops this.
 
    The entry has to be in the commit the tag points at, which is why this is its
    own small branch and pull request rather than something added after the fact.
+   **The same commit raises `npm/package.json` to the new version** and runs
+   `node npm/sync-readme.mjs` and the tests, so the tagged commit carries both and
+   no second pull request follows the release. Skip that on a fork: when `git
+   remote get-url origin` is not the repository in `npm/package.json`'s
+   `repository.url`, leave `npm/` alone.
    §3 to §5 apply to it like any other shipment. **Show the entry to the user and
    publish only after they say so.** Once that pull request is merged, pull `main`
    again and release from the section you just wrote:
@@ -163,11 +168,12 @@ curl -sIL -o /dev/null -w '%{http_code}\n' https://github.com/<owner>/seekter/re
 
 6. **npm is the maintainer's step, not this skill's.** The `seekter` package on npm
    belongs to one account and publishing needs that account's own sign-in, so
-   never run `npm publish`, and on a fork skip npm entirely. When the user is the
-   package's maintainer and asks for it, follow "Releasing (maintainers)" in
-   CONTRIBUTING.md: raise `npm/package.json` to the new version, run
-   `node npm/sync-readme.mjs` and the tests, commit, and hand them the publish
-   command.
+   never run `npm publish`, and on a fork skip npm entirely. The version is already
+   raised in the changelog commit (§3), so after the release hand the maintainer
+   the publish command from "Releasing (maintainers)" in CONTRIBUTING.md:
+   `cd npm && npm publish --access public`. A 404 on the `PUT` is an expired npm
+   sign-in, not a missing package (`npm whoami` answers 401): `npm login` first.
+   The registry can keep showing the previous `latest` for a few minutes.
 
 ## 7. Guardrails
 
