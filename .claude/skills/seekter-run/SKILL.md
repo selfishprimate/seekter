@@ -215,7 +215,7 @@ Use the profile's **voice** section and **fact bank**. Engine rules that always 
    - The source table, with the LinkedIn mode and, in `read` mode, the searches and detail requests used against their limits. A stop signal goes at the very top.
    - **Applied (n):** role · company · why it fits (one line each). Flag low-odds submissions and same-company second roles.
    - **Needs you (n):** one line each with a direct link and the exact action (CAPTCHA, account, anecdote, T&C, email verification, sector decision).
-   - **On LinkedIn, yours to send (n):** Easy Apply postings and alert-mail postings whose employer board could not be found, one line each with the LinkedIn URL and the resume to pick.
+   - **On LinkedIn, yours to send (n):** Easy Apply postings and alert-mail postings whose employer board could not be found, one line each with the LinkedIn URL and the resume to pick. Sorted by fit score. If the profile sets a minimum fit for this list (`easy_apply_min_fit`), list only those at or above it and give the rest as one count line ("4 more scored below 3; ask for them"). This is the one place a score shortens a list, because the candidate sends these by hand and asked for it; it never applies to postings Seekter fills itself (§3, "the score orders, it never removes").
    - **Skipped:** grouped by reason. **On hold (same company within the window)** gets its own line, with the earlier role and date, because the user may want to overrule it.
 
 ## 8. Browser essentials

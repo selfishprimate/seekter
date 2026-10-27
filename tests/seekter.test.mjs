@@ -422,6 +422,14 @@ describe("tracker", () => {
     assert.match(r.out, /same_company_days/);
   });
 
+  test("easy_apply_min_fit is a fit score from 1 to 5", () => {
+    withTemplate();
+    profile("settings.json", '{"easy_apply_min_fit": 6}');
+    const r = cli("settings", "--check");
+    assert.equal(r.rc, 1);
+    assert.match(r.out, /easy_apply_min_fit/);
+  });
+
   test("check catches the same posting under a shortened URL or the same posting id", () => {
     add({ company: "Medco", role: "Senior UI Designer", status: "pending",
       url: "https://careers.medco.example/global/en/job/P-100931/Senior-UI-Designer-for-medical-software-products" });
