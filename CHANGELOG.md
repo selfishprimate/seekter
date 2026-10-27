@@ -4,6 +4,78 @@ The version is the git tag; there is no version file. Each release is also on
 [the releases page](https://github.com/selfishprimate/seekter/releases) with the
 same text.
 
+## v0.14.0 — 27 October 2026
+
+Setup now shows you companies and job boards instead of asking you to name
+them, the company watchlist reads two more career-site systems, and a day's
+worth of form traps. The Peoplise and Kariyer.net notes come from
+[@dckaratas](https://github.com/dckaratas)'s runs.
+
+### Setup asked you to remember companies, so the watchlist held only what you could name
+
+`/seekter-init` asked which boards to use and which companies to watch. Most
+people name a handful, and a company that hires remotely from its own career
+site is invisible to every board. Two shared lists now ship with the kit:
+
+- **Job platforms** (`reference/sources/platforms.json`, 14 entries): where
+  each one works, which fields it covers, whether it needs an account and how
+  often a run should read it.
+- **Companies** (`reference/employers/catalog.json`, 143 entries): companies
+  hiring from their own career sites on a system Seekter can read, each with
+  where it says it hires, checked against its own board on 27 Oct 2026.
+
+Init filters both to your country and field and shows platforms first, then
+companies, grouped by how firmly each one says it hires where you live: **A**
+names your country or region, **B** is remote in a region that includes you
+without promising it, **C** has office roles and appears only if you would
+relocate. The default is to keep them all; drop what you don't want. The
+catalog holds public facts only, what a company's own board says, never
+anything from anyone's applications; `reference/employers/README.md` says what
+may go in.
+
+### The watchlist reads PeopleForce and Pinpoint
+
+Company career sites on PeopleForce (`careers.<company>.com/v/…`) and Pinpoint
+(`<company>.pinpointhq.com`) are now read like the other systems in the
+watchlist, and `live.mjs` can tell whether a posting on either is still open.
+PeopleForce forms need no account: a full name field, a rich-text cover
+letter that ignores values set from script, and coordinate clicks that drift
+while the page scrolls (one landed on the consent box). Focus fields from
+script and type.
+
+### Form traps
+
+- **Greenhouse:** typing "No" into a select filters by substring, so on a list
+  of long sentences it kept "Yes, … via a **no**n-immigrant visa" on top and
+  Return chose it. Type enough of the wanted option to be unique and read the
+  list before Return.
+- **Teamtailor:** declining the cookie banner can leave a second,
+  employer-run consent dialog mid-page, and while it is up every typed digit
+  of the phone number is lost.
+- **iCIMS** is an account wall only on its first screen. Once the candidate
+  has signed in, the rest of the wizard fills: the form sits in a same-origin
+  iframe, and Return inside a select saves the step and reloads the page.
+- **Cezanne HR** (formerly Occupop): one page, fills by typing; the cover
+  letter is a rich-text box that a reference click does not reach.
+- **cord** has no application form, only "Message the hiring manager", and
+  Seekter never sends messages for you. Its Logistics block says up front
+  whether visa sponsorship is available; read it before handing anything over.
+- **Peoplise:** the phone code list holds two `+90` options and can open on
+  the wrong country, and changing it clears the number. A submit that lands
+  on "you cannot apply to this position right now" followed a rejection from
+  the same employer the day before; a rejection logged the day it arrives
+  puts that employer on hold and the form is never filled.
+- **Kariyer.net:** the cover-letter dialog stays shut in a background window.
+  Bring the tab forward and click first; a script fallback is written down
+  for when that is not possible.
+
+### Upgrading
+
+Nothing to migrate. Your `profile/`, `applications/` and `runs/` are
+git-ignored and untouched. The company catalog is offered during setup, so an
+existing watchlist does not change on its own: to add the catalog companies
+that fit you, ask Claude to show them and add the ones you want.
+
 ## v0.13.0 — 25 October 2026
 
 Two new form systems, a Windows fix, and the workarounds that broke forms for
