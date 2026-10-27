@@ -8,7 +8,7 @@ Where a measurement needed a concrete query to be verifiable, the number is kept
 
 One file per source. **Read this file plus `your-links.md`, `freehire.md` and `linkedin.md` on every run**, because those are steps 0-2 and they are not optional. `linkedin.md` also holds the LinkedIn rule: Easy Apply and any action never, reading only when the user has opted in, and within limits. Read a board's file only when that board is in play for the run, which `profile/settings.json` decides. A source with no file here has never been measured; add one rather than growing another.
 
-**When a new source is measured, it gets its own file and a row in the table below.** When a lesson is *not* about one source's own mechanics, it belongs in this file, not in a source file, or it will never be read again.
+**When a new source is measured, it gets its own file, a row in the table below and an entry in `platforms.json`** (the machine-readable list `/seekter-init` shows, through `scripts/catalog.mjs platforms`; keep its `where`, `account` and `note` in step with the source's file). When a lesson is *not* about one source's own mechanics, it belongs in this file, not in a source file, or it will never be read again.
 
 | Source | File | When |
 |---|---|---|

@@ -894,6 +894,77 @@ describe("employer sweep", () => {
   });
 });
 
+describe("catalog", () => {
+  // The shared platform and employer lists, filtered for one candidate's country.
+  let tmp;
+  const CAT = [
+    { name: "World Co", ats: "ashby", slug: "world", scope: ["worldwide"], sectors: ["software"], note: "Global remote" },
+    { name: "EU Only", ats: "greenhouse", slug: "euonly", scope: ["europe"], countries: ["DE", "NL"], sectors: ["saas"], note: "Germany and Netherlands" },
+    { name: "Europe Open", ats: "lever", slug: "eopen", scope: ["europe"], sectors: ["saas"], note: "Remote Europe" },
+    { name: "Coin Co", ats: "ashby", slug: "coin", scope: ["emea"], sectors: ["crypto"], note: "Remote EMEA" },
+    { name: "US Co", ats: "greenhouse", slug: "usco", scope: ["americas"], sectors: ["saas"], note: "US remote" },
+    { name: "Office Co", ats: "lever", slug: "office", scope: ["offices"], countries: ["TR"], sectors: ["apps"], note: "Home-country office" },
+  ];
+  const PLAT = [
+    { name: "Everywhere", key: "every", where: "global", disciplines: "all", always: true, cadence: "every run", note: "x" },
+    { name: "Home Board", key: "home", where: ["TR"], disciplines: "all", account: true, cadence: "weekly", note: "x" },
+    { name: "Other Home", key: "other", where: ["DE"], disciplines: "all", cadence: "weekly", note: "x" },
+    { name: "Design Niche", key: "niche", where: "global", disciplines: ["design"], cadence: "daily", note: "x" },
+  ];
+  beforeEach(() => {
+    tmp = makeRepo("seekter-catalog-", ["seekter.mjs", "_shared.mjs", "catalog.mjs"]);
+    fs.mkdirSync(path.join(tmp, "templates"));
+    fs.copyFileSync(path.join(REPO, "templates", "settings.json"), path.join(tmp, "templates", "settings.json"));
+    fs.mkdirSync(path.join(tmp, "reference", "employers"), { recursive: true });
+    fs.mkdirSync(path.join(tmp, "reference", "sources"), { recursive: true });
+    fs.writeFileSync(path.join(tmp, "reference", "employers", "catalog.json"), JSON.stringify(CAT));
+    fs.writeFileSync(path.join(tmp, "reference", "sources", "platforms.json"), JSON.stringify(PLAT));
+    fs.mkdirSync(path.join(tmp, "profile"));
+    fs.writeFileSync(path.join(tmp, "profile", "settings.json"), JSON.stringify({ employers: [{ name: "World Co", ats: "ashby", slug: "world" }] }));
+  });
+  afterEach(() => fs.rmSync(tmp, { recursive: true, force: true }));
+
+  test("a country list wins over the region, and office roles need --relocation", () => {
+    const r = runIn(tmp, "catalog.mjs", ["employers", "--country", "tr"]);
+    assert.equal(r.rc, 0, r.err);
+    assert.match(r.out, /^A \| World Co/m);
+    assert.match(r.out, /^A \| Coin Co/m);
+    assert.match(r.out, /^B \| Europe Open/m);
+    assert.doesNotMatch(r.out, /EU Only|US Co|Office Co/);
+    const rel = runIn(tmp, "catalog.mjs", ["employers", "--country", "TR", "--relocation"]);
+    assert.match(rel.out, /^C \| Office Co/m);
+    const de = runIn(tmp, "catalog.mjs", ["employers", "--country", "DE"]);
+    assert.match(de.out, /^A \| EU Only/m);
+  });
+
+  test("--add skips excluded sectors and rows already on the watchlist", () => {
+    const r = runIn(tmp, "catalog.mjs", ["employers", "--country", "TR", "--exclude-sectors", "crypto", "--add"]);
+    assert.equal(r.rc, 0, r.err);
+    assert.match(r.out, /added 1 to profile\/settings\.json \(2 on the watchlist\)/);
+    const mine = JSON.parse(fs.readFileSync(path.join(tmp, "profile", "settings.json"), "utf8"));
+    assert.deepEqual(mine.employers.map((e) => e.slug), ["world", "eopen"]);
+  });
+
+  test("platforms are filtered by country and discipline", () => {
+    const r = runIn(tmp, "catalog.mjs", ["platforms", "--country", "TR"]);
+    assert.equal(r.rc, 0, r.err);
+    assert.match(r.out, /^every \|.*\| always/m);
+    assert.match(r.out, /^home \|.*\| account/m);
+    assert.doesNotMatch(r.out, /Other Home/);
+    assert.match(runIn(tmp, "catalog.mjs", ["platforms", "--country", "TR", "--discipline", "design"]).out, /^niche \|/m);
+    assert.doesNotMatch(runIn(tmp, "catalog.mjs", ["platforms", "--country", "TR", "--discipline", "engineering"]).out, /Design Niche/);
+  });
+
+  test("the shipped catalog only names systems the kit can read", () => {
+    const cat = JSON.parse(fs.readFileSync(path.join(REPO, "reference", "employers", "catalog.json"), "utf8"));
+    const systems = new Set(fs.readdirSync(path.join(SCRIPTS, "providers")).filter((f) => f.endsWith(".mjs")).map((f) => f.slice(0, -4)));
+    const bad = cat.filter((r) => !systems.has(r.ats) || !r.slug || !(r.scope || []).length || !r.verified);
+    assert.deepEqual(bad.map((r) => r.name), []);
+    const keys = cat.map((r) => `${r.ats}:${r.slug.toLowerCase()}`);
+    assert.equal(new Set(keys).size, keys.length);
+  });
+});
+
 describe("live check", () => {
   // Each system's own answer for one posting, from a fake network that also gives status codes.
   let tmp, http;
