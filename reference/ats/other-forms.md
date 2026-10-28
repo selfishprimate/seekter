@@ -100,3 +100,16 @@ First measured 23 Oct 2026. No account. The LinkedIn apply link is a redirect th
 - Not an application form. A cord job page has no Apply: the only action is "Message <hiring manager>", which starts a chat on cord under the candidate's own cord account. Seekter never sends messages for the candidate, so a cord posting is the candidate's to pursue or skip; don't log it as an account wall that can be filled after a sign-in. Measured 27 Oct 2026.
 - Before the message can be sent, cord asks the candidate about visa eligibility for the role's region (EU on a London posting, measured 27 Oct 2026). A candidate without it cannot reach the hiring manager at all, so "Visa sponsorship: Not available" in the Logistics block is a hard closer, not a question to raise in the message.
 - The page's Logistics block carries the closers in plain text ("Visa sponsorship: Not available", "Remote working: Hybrid…", the salary band). Read it before handing anything over.
+
+## HRPanda (`<co>.hrpanda.co/<slug>`)
+
+- One page, no account. Measured 28 Oct 2026 on one tenant: first and last name, email, years of experience, phone (country picker already on the home country; type the national number), "Your Location" free text, an optional salary block (currency, fixed or range, period), a CV upload (`find` + `file_upload` works; an "Autofill from CV" dropzone sits above the form and only runs the parse), the employer's own required free-text questions as textareas, and an optional 1-5 rating of the application process.
+- Real typing after a ref click fills every text field and textarea; values read back correctly.
+- **Two required checkboxes sit under the Apply button: "I agree to the terms and conditions" and "I agree to the clarifications"**. Both accept the platform's terms, so the form ends as a hand-off with everything else filled.
+
+## JazzHR (`<co>.applytojob.com/apply/<code>/<slug>`)
+
+- One page, no account. Measured 28 Oct 2026: plain inputs with ids `resumator-*-value` (name, email, phone, address, city, state, postal code, LinkedIn, website, earliest start date), a cover-letter textarea, a résumé `input[type=file]` (`find` + `file_upload`), and the employer's questions as `resumator-questionnaire[<id>]`, which are **`name` attributes, not ids**: select them with `[name="…"]`. Native `<select>`s and text inputs all take the native setter plus `input`/`change` events.
+- The form ends with a visible reCAPTCHA v2 ("Human Check"), so every JazzHR application is a hand-off with the rest filled.
+- **"Earliest start date?" is a jQuery UI datepicker (`resumator-datepicker`), not free text.** Measured 28 Oct 2026: the text "Immediately" sat in it, and Submit failed without highlighting any field. Click the input and pick a day from the calendar; it writes `YYYY-MM-DD`.
+- **A résumé set with `file_upload` is not registered until jQuery sees the change.** The input held the file but the form's own handler had not run. `jQuery(input).trigger('change')` fixes it; pasting the résumé text into `resumator-resumetext-value` as well costs nothing.
