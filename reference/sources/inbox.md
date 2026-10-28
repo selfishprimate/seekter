@@ -39,6 +39,10 @@ unable to move forward|unable to proceed|have filled the position|position has b
 
 **Which folders to sweep.** Never just the Inbox. Candidates file application mail, and employer mail lands in Junk regularly, so read every folder the profile lists (§11). A sweep of one folder under-counts replies and makes the funnel look worse than it is.
 
+**Junk is read item by item, not filtered by today's date or by a keyword pass.** The folder is mostly real spam, which is exactly what makes a skim dangerous: measured 28 Oct 2026, a sweep read only the day's Junk rows, judged a recruiter's outreach ("Action Requested: … Project Opportunity", from a talent marketplace's own domain) to be spam by its subject, and reported "nothing new". The candidate found it. Harvest every row (the list virtualises: scroll its own scroll container with `scrollTop` and collect `aria-label`s until the count stops growing; wheel scrolls over the list did not move it that day), then open anything from a recruiter, a hiring platform or an employer. Recruiter and marketplace outreach is not a reply to an application and gets no tracker row, but it asks the candidate to act, so it is surfaced to the candidate and moved to Action Required. Whether it is worth answering is theirs to decide.
+
+**Moving a mail out of Junk opens a dialog whose "never send mail from this address to Junk" box is ticked by default.** Leaving it ticked adds the sender to the account's safe-sender list, which is a standing setting the candidate did not ask for. Untick it, then confirm the move.
+
 **Fast reading technique in Outlook Web**
 1. The list is virtualized (6-8 rows in the DOM). **Harvest `[role=option]` and read its `aria-label`.** The label carries sender, subject, date and a body preview in one string, which is enough to triage before opening anything. `[data-convid]` works again as of 29 Sept and returns the same count, so use whichever survives; do not assume either one is dead, and allow up to 25 s after a folder switch before treating a count of zero as real:
    ```js
