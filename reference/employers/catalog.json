@@ -37,6 +37,30 @@
   "verified": "2026-10-27"
  },
  {
+  "name": "Amazon",
+  "ats": "amazon",
+  "slug": "amazon",
+  "scope": [
+   "offices"
+  ],
+  "countries": [
+   "US",
+   "GB",
+   "ES",
+   "CA"
+  ],
+  "sectors": [
+   "ecommerce",
+   "software"
+  ],
+  "seen": [
+   "design",
+   "engineering"
+  ],
+  "note": "Office and hybrid roles; design teams mostly in the US (Seattle, Bellevue, Santa Clara)",
+  "verified": "2026-10-28"
+ },
+ {
   "name": "Amplemarket",
   "ats": "greenhouse",
   "slug": "amplemarket",

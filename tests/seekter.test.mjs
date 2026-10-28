@@ -319,6 +319,17 @@ describe("tracker", () => {
     assert.equal(cli("check", "https://acme.com/careers/7654321", "--company", "Acme").rc, 0);
   });
 
+  test("a company in same_company_exempt is shown but never held", () => {
+    profile("settings.json", '{"same_company_exempt": ["Acme"]}');
+    add({ company: "Acme", role: "Designer", url: "https://acme.com/careers/1234567", status: "applied" });
+    const r = cli("check", "https://acme.com/careers/7654321", "--company", "Acme");
+    assert.equal(r.rc, 0, r.out);
+    assert.match(r.out, /same company, other role/);
+    assert.match(r.out, /not held/);
+    const many = cliIn("https://acme.com/careers/7654321 | Acme\n", "check-many");
+    assert.ok(many.out.startsWith("SAMECO"), many.out);
+  });
+
   test("a name inside another word is not the same company", () => {
     // Measured 5 and 6 Oct: "telli" matched Intellias and "Flex" matched WorkFlex, and
     // both were held under the 30-day rule for employers never applied to.
@@ -859,6 +870,20 @@ describe("employer sweep", () => {
     assert.doesNotMatch(r.out, /problem:/);
   });
 
+  test("amazon.jobs is searched, and one role posted in several offices is merged", () => {
+    http = fakeHttp(tmp, [
+      ["amazon.jobs/en/search.json", JSON.stringify({ hits: 3, jobs: [
+        { title: "Sr. Product Designer, Search", normalized_location: "Seattle, Washington, USA", job_path: "/en/jobs/111/sr-product-designer-search" },
+        { title: "Sr. Product Designer, Search ", normalized_location: "Santa Clara, California, USA", job_path: "/en/jobs/112/sr-product-designer-search" },
+        { title: "Software Development Engineer", normalized_location: "Seattle, Washington, USA", job_path: "/en/jobs/113/sde" }] })],
+    ], "{}");
+    const r = sweep([{ name: "Amazon", ats: "amazon", slug: "amazon" }]);
+    assert.equal(r.rc, 0, r.err);
+    assert.match(r.out, /1 boards, 2 postings → 1 candidates/);
+    assert.match(r.out, /Amazon \| Sr\. Product Designer, Search \| Seattle, Washington, USA \/ Santa Clara, California, USA \| https:\/\/www\.amazon\.jobs\/en\/jobs\/111\/sr-product-designer-search$/m);
+    assert.doesNotMatch(r.out, /112|Software Development/);
+  });
+
   test("a PeopleForce career site is read from its /v.json array", () => {
     http = fakeHttp(tmp, [
       ["careers.pf-co.example/v.json", JSON.stringify([
@@ -1018,6 +1043,18 @@ describe("live check", () => {
     assert.equal(r.rc, 0, r.err);
     assert.match(r.out, /^OPEN +https:\/\/pp-co\.pinpointhq\.com\/en\/postings\/aaaa.* +\(pinpoint\)/m);
     assert.match(r.out, /^CLOSED +https:\/\/pp-co\.pinpointhq\.com\/postings\/cccc.* +\(pinpoint\)/m);
+  });
+
+  test("an amazon.jobs posting is open while its page answers, closed on a 404", () => {
+    const net = fakeHttp(tmp, [
+      ["amazon.jobs/en/jobs/111", "<html>posting</html>"],
+      ["amazon.jobs/en/jobs/999", { status: 404, body: "" }],
+    ], { status: 500, body: "" });
+    const r = runIn(tmp, "live.mjs", ["https://www.amazon.jobs/en/jobs/111/sr-product-designer-search",
+      "https://www.amazon.jobs/en/jobs/999/gone"], { env: net.env });
+    assert.equal(r.rc, 0, r.err);
+    assert.match(r.out, /^OPEN +https:\/\/www\.amazon\.jobs\/en\/jobs\/111.* +\(amazon\)/m);
+    assert.match(r.out, /^CLOSED +https:\/\/www\.amazon\.jobs\/en\/jobs\/999.* +\(amazon\)/m);
   });
 
   test("a PeopleForce posting is open while its id is in /v.json", () => {
