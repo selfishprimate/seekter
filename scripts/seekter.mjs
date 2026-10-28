@@ -567,6 +567,16 @@ export function sameCompany(query, company) {
   return q === c || new RegExp(`(?:^|-)${q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?:-|$)`).test(c);
 }
 
+// Companies large enough that one team's hiring says nothing about another's (Amazon, Google,
+// Microsoft…): the candidate lists them in `same_company_exempt`, and a posting there is never
+// held by the window. `check` still prints the earlier roles, so a repost of the same role is
+// caught by reading them (seekter-run section 2, rule 1.6).
+export function companyExempt(company) {
+  let list = [];
+  try { list = settings().same_company_exempt || []; } catch { list = []; }
+  return Array.isArray(list) && list.some((n) => typeof n === "string" && sameCompany(n, company || ""));
+}
+
 function holding(records, days) {
   const since = daysAgo(days);
   return records.filter((r) => ALWAYS_HOLDING.includes(r.status) ||
@@ -626,6 +636,10 @@ function cmdCheck(a) {
     console.log(`  same company, other role: ${pyStr(r.status)} | ${pyStr(r.role)} | ${pyStr(r.applied || r.updated)}`);
   }
   const days = sameCompanyDays();
+  if (company.length && companyExempt(a.company)) {
+    console.log(`not held: ${pyStr(a.company)} is in same_company_exempt; read the roles above for a repost`);
+    return 0;
+  }
   if (holding(company, days).length) {
     console.log(`HOLD: one application per company per ${days} days. Apply only if the user says so;` +
       " otherwise skip with this reason, or pick the better-fitting role while neither has gone out.");
@@ -656,7 +670,7 @@ function cmdCheckMany() {
       continue;
     }
     const same = apps.filter((x) => co && sameCompany(co, x.company || ""));
-    const tag = holding(same, days).length ? "HOLD   " : same.length ? "SAMECO " : "NEW    ";
+    const tag = holding(same, days).length && !companyExempt(co) ? "HOLD   " : same.length ? "SAMECO " : "NEW    ";
     const tail = same.length ? ` -> ${same.length} earlier: ` +
       same.slice(0, 3).map((x) => `${pyStr(x.status)}:${pyStr(x.role)}`).join(", ") : "";
     console.log(tag + line + tail);
@@ -796,6 +810,8 @@ function cmdSettings(a) {
   if (!["email", "read"].includes((cfg.linkedin || {}).mode)) problems.push("linkedin.mode must be email or read");
   const days = cfg.same_company_days;
   if (typeof days !== "number" || !Number.isInteger(days) || days < 0) problems.push("same_company_days must be a whole number of days");
+  const exempt = cfg.same_company_exempt;
+  if (exempt !== undefined && !(Array.isArray(exempt) && exempt.every((n) => typeof n === "string"))) problems.push("same_company_exempt must be a list of company names");
   const minFit = cfg.easy_apply_min_fit;
   if (minFit !== undefined && !(Number.isInteger(minFit) && minFit >= 1 && minFit <= 5)) problems.push("easy_apply_min_fit must be a whole number from 1 to 5");
   const prof = path.join(ROOT, "profile", "profile.md");
