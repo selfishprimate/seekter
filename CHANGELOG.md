@@ -4,6 +4,61 @@ The version is the git tag; there is no version file. Each release is also on
 [the releases page](https://github.com/selfishprimate/seekter/releases) with the
 same text.
 
+## v0.15.0 — 28 October 2026
+
+Amazon's career site joins the watchlist, very large employers can be taken out
+of the one-application-per-company rule, the report's Easy Apply list can stop
+at a fit score, and two more form systems are written down. **Update if your
+inbox sweep reads a Junk folder:** a recruiter's mail was missed there.
+
+### Amazon was out of reach, and one Amazon application held every other one
+
+amazon.jobs is not on any system the watchlist read, so Amazon's roles reached
+a run only through LinkedIn or a board. The new `amazon` provider searches
+amazon.jobs once per profile query and merges a role posted once per office into
+one entry with every location; `live.mjs` checks whether a posting is still
+open. Measured 28 Oct 2026: 74 design roles after the title filter. Amazon is
+in the company catalog (offices in the US, the UK, Spain and Canada). Applying
+needs your own amazon.jobs account, so the first form waits for you to sign in.
+
+The 30-day rule then held every other Amazon role for a month after the first
+application, though Amazon's teams hire independently. The new
+`same_company_exempt` setting lists companies the window never holds: `check`
+says "not held" and still prints the earlier roles, so a repost of the same role
+is caught by reading them. It ships empty; add a company only when you want to.
+
+### The Easy Apply list in the report can stop at a fit score
+
+The report lists the LinkedIn postings you send yourself, sorted by fit score.
+`easy_apply_min_fit` in settings leaves the ones below a score out of that list
+and gives their count in one line instead. The default, 1, shows them all, and
+it never shortens what Seekter applies to on its own.
+
+### A recruiter's mail in Junk was taken for spam
+
+The inbox sweep read only the day's rows in Junk and judged a recruiter's
+outreach to be spam by its subject. You found it, not Seekter. Junk is now read
+row by row, every row, and recruiter or hiring-platform outreach is shown to you
+and moved to Action Required. Moving a mail out of Junk in Outlook ticks "never
+send this sender to Junk" by default, which adds a standing safe-sender rule;
+the sweep unticks it first.
+
+### Form traps
+
+- **HRPanda:** one page, fills by typing, and ends in two required checkboxes
+  that accept the platform's terms, so it is always yours to submit.
+- **JazzHR:** ends in a reCAPTCHA, and its first submit can fail without
+  highlighting a field. The start date is a calendar that rejects typed text,
+  and a resume set from script is not registered until the form sees a change
+  event.
+
+### Upgrading
+
+Nothing to migrate. Your `profile/`, `applications/` and `runs/` are
+git-ignored and untouched. To watch Amazon, ask Claude to add it from the
+catalog; to exempt a company from the 30-day rule, ask Claude to add it to
+`same_company_exempt`.
+
 ## v0.14.0 — 27 October 2026
 
 Setup now shows you companies and job boards instead of asking you to name
