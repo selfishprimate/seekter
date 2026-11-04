@@ -97,7 +97,7 @@ window.SEARCH=async function(key,kw,geo,remote,tpr,start){
   var r=await fetch(u,{headers:{'csrf-token':window.CSRF,'accept':'application/vnd.linkedin.normalized+json+2.1'}});
   window.R[key]={status:r.status,j:r.ok?await r.json():null};return r.status;};
 ```
-- In `j.included`, records whose `entityUrn` is `...jobPosting:<id>` carry `title`: id and title in one request. Filter by title, then fetch details only for candidates.
+- In `j.included`, the card records have `entityUrn` `urn:li:fsd_jobPostingCard:(<id>,JOBS_SEARCH)` and carry `jobPostingTitle`, `primaryDescription.text` (company) and `secondaryDescription.text` (location): id, title, company and place in one request. Match them with `/jobPostingCard:\((\d+)/`. Filter by title, then fetch details only for candidates. Measured 31 Oct 2026: a parser matching `jobPosting:(\d+)` found nothing on a 200 response, which reads exactly like an empty market and cost four of the run's fifteen searches.
 - `count` max 25; `start=0/25/50`. `tpr`: `r86400`, `r259200`, `r604800`, `r2592000`. `workplaceType:List(2)` = remote.
 - **Parentheses in a keyword silently return 0** unless escaped: `encodeURIComponent` leaves `(` and `)` alone and the query DSL is built from them. The `replace` calls above handle it.
 - **Relevance, never `sortBy:List(DD)`.** Date order on a loose multi-word query ranks by posting time across everything matching any word: measured 23 Sept, relevance 25/25 on-discipline, date order 1/25. Use `timePostedRange` for freshness.
