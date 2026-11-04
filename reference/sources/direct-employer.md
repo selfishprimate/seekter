@@ -18,6 +18,7 @@ The companies come from `employers` in `profile/settings.json`, one row per comp
 | `workable` | `apply.workable.com/<slug>` | `apply.workable.com/api/v1/widget/accounts/<slug>` |
 | `smartrecruiters` | `jobs.smartrecruiters.com/<slug>/<id>` (case matters: `ScalableGmbH`) | `api.smartrecruiters.com/v1/companies/<slug>/postings`, 100 a page |
 | `recruitee` | `<slug>.recruitee.com` | `<slug>.recruitee.com/api/offers/` |
+| `gem` | `jobs.gem.com/<slug>` (the job pages render in the browser) | `api.gem.com/job_board/v0/<slug>/job_posts/` |
 | `personio` | `<slug>.jobs.personio.de` (or `.com`) | `<slug>.jobs.personio.de/xml`, then `.com` |
 | `teamtailor` | the career site's host: `<co>.teamtailor.com` or the company's own domain (`jobs.<co>.com`) | `<host>/jobs.rss` |
 | `peopleforce` | the career site's host (`careers.<co>.com`, "Powered by PeopleForce" in the footer) | `<host>/v.json` (a JSON array of open vacancies; the `?source=` tag on each URL is cut) |

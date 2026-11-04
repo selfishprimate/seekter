@@ -79,6 +79,17 @@ const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ",
   lsquo: "‘", rsquo: "’", ldquo: "“", rdquo: "”", hellip: "…", bull: "•", middot: "·", copy: "©", reg: "®",
   trade: "™", euro: "€", pound: "£", times: "×", eacute: "é", egrave: "è", uuml: "ü", ouml: "ö", auml: "ä",
   ccedil: "ç", szlig: "ß" };
+// Readable text from an HTML fragment or page: scripts and styles dropped, block ends kept as
+// line breaks. Unescaped before and after the tags go, because some APIs (Greenhouse) send the
+// HTML itself escaped.
+export function htmlText(s) {
+  return htmlUnescape(htmlUnescape(String(s || ""))
+    .replace(/<(script|style|noscript)[^>]*>[\s\S]*?<\/\1>/gi, " ")
+    .replace(/<(br|li|\/p|\/li|\/h\d|\/div|\/tr)[^>]*>/gi, "\n")
+    .replace(/<[^>]+>/g, " "))
+    .replace(/[ \t ]+/g, " ").replace(/ *\n[\s]*/g, "\n").trim();
+}
+
 export function htmlUnescape(s) {
   return s.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+\d*);/gi, (m, e) => {
     if (e[0] === "#") {
