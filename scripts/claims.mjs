@@ -10,7 +10,7 @@
 //           profile/profile.md (identity, standard answers, salary bands, fact bank), the files
 //           those sections point to by path (`profile/...`), and profile/resume/json/resume.json.
 //           Dates, times, years, single digits and URLs are not claims, and neither is a salary
-//           answer (a sentence or field that names salary, pay, a rate or a band): it is worked
+//           answer (a sentence or field that names salary, compensation, wages, a pay range or a day rate): it is worked
 //           out from the band table, which has its own rule. Any other money figure is checked. A number the
 //           posting itself gives (its "5-minute video") passes when the posting is passed as --posting.
 //   voice   a banned phrase from the profile's voice section, or a long dash.
@@ -45,7 +45,11 @@ export function withoutDates(text) {
 // compensation 4,800 per month", "salary expectations? -> 64000 (EUR annual, top of the band)".
 // A money figure anywhere else ("cut costs by $2M a year") is a claim like any other number.
 // The first version skipped every amount with a currency, and a made-up "$2M → $5M" passed.
-const SALARY = /salary|compensation|remuneration|\bpay\b|expect|\brate\b|\bband\b|\bgross\b|\bnet\b|\bbase\b|\bctc\b|\bwage/i;
+// The second matched ordinary words (base, net, expect, rate, pay, gross), so "I grew the user
+// base by 300%" and "I expect to cut costs by $2M" lost their numbers and passed (issue #84).
+// Only words that name pay itself mark a salary answer; "rate" and "pay" count in their pay
+// phrases ("day rate", "pay range"), never alone.
+const SALARY = /salary|compensation|remuneration|\bwages?\b|\bctc\b|\bpay (band|range|expectations?)\b|\bexpected (pay|rate)\b|\b(day|daily|hourly) rate\b/i;
 export function withoutSalary(text) {
   // Fields are split on newlines, | and ;, sentences on . and ! (not ?, so a question and the
   // answer after it stay one field).

@@ -1351,6 +1351,17 @@ describe("answer check", () => {
     assert.equal(check("What are your salary expectations? -> 64000 (EUR annual).").rc, 0);
   });
 
+  test("ordinary words do not make a sentence a salary answer (issue #84)", () => {
+    // base, net, expect, rate, pay and gross once blanked every number in their sentence.
+    const r = check("I grew the user base by 300%. I expect to cut costs by $2M. The net effect was 45 fewer tickets.");
+    assert.equal(r.rc, 1);
+    assert.match(r.out, /"300%?"/);
+    assert.match(r.out, /"2M"/);
+    assert.match(r.out, /"45"/);
+    // The pay phrases still mark a salary answer.
+    assert.equal(check("My day rate is EUR 300. Pay range: 50,000 to 60,000.").rc, 0);
+  });
+
   test("banned phrases and long dashes are flagged", () => {
     const r = check("I am passionate about tokens \u2014 and I own them end-to-end.");
     assert.equal(r.rc, 1);
