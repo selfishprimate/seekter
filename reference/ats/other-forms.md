@@ -113,3 +113,16 @@ First measured 23 Oct 2026. No account. The LinkedIn apply link is a redirect th
 - The form ends with a visible reCAPTCHA v2 ("Human Check"), so every JazzHR application is a hand-off with the rest filled.
 - **"Earliest start date?" is a jQuery UI datepicker (`resumator-datepicker`), not free text.** Measured 28 Oct 2026: the text "Immediately" sat in it, and Submit failed without highlighting any field. Click the input and pick a day from the calendar; it writes `YYYY-MM-DD`.
 - **A résumé set with `file_upload` is not registered until jQuery sees the change.** The input held the file but the form's own handler had not run. `jQuery(input).trigger('change')` fixes it; pasting the résumé text into `resumator-resumetext-value` as well costs nothing.
+
+## Talemetry (`apply.talemetry.com/application/<uuid>`)
+
+- No account. Measured 29 Oct 2026 on one employer: the company's careers page ("Apply Now") opens a modal whose content is a **cross-origin iframe** from `apply.talemetry.com`, so scripts and `find` on the careers page see nothing inside it. Read the iframe's `src` and navigate the tab to it; the flow works the same at the top level.
+- Four steps: (1) upload a resume, enter details by hand, or use a LinkedIn profile (never the LinkedIn option); (2) contact details, then the parsed work history, then education, each its own "Next"; (3) the employer's screening questions; (4) "Ready to Submit?", where clicking Submit confirms the privacy statement was read. There is no separate checkbox.
+- The CV parse put the whole name into First Name; split it by hand. Work and education history came out right, end dates included.
+- Contact fields, the State/Region native `<select>` (region codes such as `TU34`) and the screening questions, which are native `<select>`s with Yes/No despite reading like radios, all take `form_input` by ref.
+
+## Spott (`app.spott.io/careers/<agency>/<uuid>`)
+
+- A recruitment agency's job page with the form underneath, no account. Measured 4 Nov 2026: first name, last name, email, phone (`name` attributes `firstName`, `lastName`, `email`, `phoneNumber`; the native setter takes them and the phone is reformatted to spaced international format), a LinkedIn field that keeps a fixed `linkedin.com/in/` prefix (type only the handle), an optional Location button that opens a modal with a place search (pick the suggestion, then press the modal's confirm button), résumé and cover-letter file inputs (`find` + `file_upload`).
+- **The form ends with a required "I certify that all information provided is accurate" checkbox.** It is a declaration, so it goes to the candidate with Submit, the same way the other required declarations do.
+
