@@ -4,6 +4,67 @@ The version is the git tag; there is no version file. Each release is also on
 [the releases page](https://github.com/selfishprimate/seekter/releases) with the
 same text.
 
+## v0.16.0 — 4 November 2026
+
+Postings are now read by a script instead of into the conversation, Gem joins
+the systems Seekter can read, and three more application forms are written
+down. **Update if your runs read many postings a day:** the reading was what
+filled the conversation and pushed long runs into compaction.
+
+### Reading postings filled the conversation, and a quick read missed closers
+
+Every candidate's text was read in the browser or pasted into the conversation
+before anything was decided. Measured 4 Nov 2026: 60 LinkedIn details and their
+employer pages took about 40 calls through a 1,000-character output window, and
+a long run ran out of room. The new `scripts/posting.mjs` reads a posting from
+its own system (Greenhouse with the form's questions, Ashby with its country
+list, Lever, Workable, SmartRecruiters, Recruitee, Gem, or the plain page),
+saves the text under `runs/<date>/post/`, and prints one line per posting:
+`CLOSER` with the quoted sentence, `CHECK` with the sentences to read, or
+`CLEAR`. LinkedIn is never fetched; save its text and pass `--file`.
+
+The same afternoon it read 15 postings in 4 calls, matched every hand verdict,
+and found three closers the hand read had missed or would have: a sentence
+saying the employer will not sponsor work visas, a posting written entirely in
+Polish, and a Polish B2 requirement that justjoin.it shows only as a structured
+"pl / B2" field. Fit is still yours to judge from the saved text; the script
+only does the mechanical half. `/seekter-run` §2.7 tells the run to use it.
+
+### Gem job pages looked empty
+
+Gem renders its job pages in the browser, so a plain fetch saw no posting at
+all. The new `gem` provider reads Gem's board API, which carries every post's
+full text, and answers `live.mjs` too.
+
+### Three more forms, and two traps on Indeed and LinkedIn
+
+- **Talemetry** sits in a cross-origin iframe inside a careers page's modal;
+  opening the iframe's own address makes it fillable.
+- **Spott**, a recruitment agency's form, ends with a required accuracy
+  declaration that stays with you.
+- **SAP SuccessFactors** was only an account wall. Once you sign in, Seekter
+  fills it: typeahead picklists, date fields inside shadow roots, required From
+  dates on every work and education row, and Save to keep a draft without
+  applying.
+- **Indeed** walls its job pages while its search pages answer, and SmartApply's
+  review button accepts Indeed's and Glassdoor's terms, so that click is yours.
+- **LinkedIn** search results moved to `jobPostingCard` records; the old parser
+  read them as an empty market and wasted searches. **Working Nomads** has a
+  search endpoint that returns the design category without a browser.
+
+### A made-up number passed the claims check when its sentence said "base" or "expect"
+
+`claims.mjs` skips the numbers in a salary answer, and it recognised one by
+ordinary words as well as pay words: base, net, expect, rate, pay, gross. "I
+grew the user base by 300%" and "I expect to cut costs by $2M" lost their
+numbers before the check and passed as clean. Now only words that name pay
+itself mark a salary answer. Reported by Matt Abate in #84.
+
+### Upgrading
+
+Nothing to migrate. Your `profile/`, `applications/` and `runs/` are
+git-ignored and untouched.
+
 ## v0.15.0 — 28 October 2026
 
 Amazon's career site joins the watchlist, very large employers can be taken out
