@@ -84,6 +84,9 @@ Section = vendor name; BambooHR, Revolut and account walls → Hand off; Viterbi
 | `app.recruitcrafts.com/job-detail/<id>` | Recruitcrafts (`other-forms.md`) |
 | `<co>.hrpanda.co/<slug>` | HRPanda (`other-forms.md`) |
 | `<co>.applytojob.com/apply/<code>/<slug>` | JazzHR (`other-forms.md`) |
+| `app.spott.io/careers/<agency>/<uuid>` | Spott (`other-forms.md`) |
+| `career<N>.successfactors.eu/careers?company=<co>` | SAP SuccessFactors (`successfactors.md`; account wall, fillable after the candidate signs in) |
+| `apply.talemetry.com/application/<uuid>` (often inside a careers-page modal) | Talemetry (`other-forms.md`) |
 | `*.homerun.co` | Homerun |
 | `api.dueto.io/Redirect/<id>`, `employer.dueto.io/position/<n>/<co>` | Dueto (`other-forms.md`) |
 | Spanish UI, `s-rall-bn` cookie button | Viterbit |

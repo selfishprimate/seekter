@@ -33,3 +33,15 @@ export async function live(url, net) {
   try { d = JSON.parse(r.body); } catch { d = null; }
   return d && d.active === false ? "closed" : "open";
 }
+
+// The posting itself, for scripts/posting.mjs.
+export async function posting(url, net) {
+  const m = url.match(/jobs\.smartrecruiters\.com\/([^/?#]+)\/(\d+)/i);
+  if (!m) return null;
+  const d = await net.json(`https://api.smartrecruiters.com/v1/companies/${m[1]}/postings/${m[2]}`);
+  if (!d || !d.name) return null;
+  const s = ((d.jobAd || {}).sections) || {};
+  const l = d.location || {};
+  return { title: d.name, location: [l.city, (l.country || "").toUpperCase(), l.remote ? "remote" : ""].filter(Boolean).join(" "),
+    html: ["companyDescription", "jobDescription", "qualifications", "additionalInformation"].map((k) => (s[k] || {}).text || "").join("") };
+}

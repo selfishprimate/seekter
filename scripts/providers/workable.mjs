@@ -21,3 +21,14 @@ export async function live(url, net) {
   if (!d || d.state === undefined || d.state === "published") return "open";
   return /^(closed|archived)$/i.test(d.state) ? "closed" : null;
 }
+
+// The posting itself, for scripts/posting.mjs.
+export async function posting(url, net) {
+  const m = url.match(/apply\.workable\.com\/([^/?#]+)\/j\/(\w+)/i);
+  if (!m) return null;
+  const d = await net.json(`https://apply.workable.com/api/v2/accounts/${m[1]}/jobs/${m[2]}`);
+  if (!d || !d.title) return null;
+  const l = d.location || {};
+  return { title: d.title, location: [l.city, l.country, d.remote ? "remote" : "", d.workplace].filter(Boolean).join(" / "),
+    html: `${d.description || ""}${d.requirements || ""}${d.benefits || ""}` };
+}

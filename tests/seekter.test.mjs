@@ -214,7 +214,7 @@ function makeRepo(prefix, scripts = ["seekter.mjs"]) {
   fs.mkdirSync(path.join(tmp, "scripts"));
   for (const s of scripts) fs.copyFileSync(path.join(SCRIPTS, s), path.join(tmp, "scripts", s));
   // The employer sweep reads one file per application system from scripts/providers/.
-  if (scripts.includes("employer_sweep.mjs") || scripts.includes("live.mjs")) fs.cpSync(path.join(SCRIPTS, "providers"), path.join(tmp, "scripts", "providers"), { recursive: true });
+  if (scripts.some((s) => ["employer_sweep.mjs", "live.mjs", "posting.mjs"].includes(s))) fs.cpSync(path.join(SCRIPTS, "providers"), path.join(tmp, "scripts", "providers"), { recursive: true });
   fs.mkdirSync(path.join(tmp, "applications"));
   return tmp;
 }
@@ -1106,6 +1106,94 @@ describe("live check", () => {
   });
 });
 
+describe("posting read", () => {
+  // The mechanical half of triage: the posting's text from its own system, and the sentences
+  // that close the door, each quoted. Pure analysis first, then the CLI against a fake network.
+  let analyze, textLanguage;
+  beforeEach(async () => { ({ analyze, textLanguage } = await import("../scripts/posting.mjs")); });
+  const opts = { languages: ["en", "tr"], home: "tr" };
+
+  test("a posting written in another language is a closer, a German company name is not", () => {
+    const de = "Wir suchen eine Person, die mit uns und für unsere Kunden arbeitet. Sie ist bei der Arbeit mit dem Team, und die Aufgaben sind für dich. Wir bieten die Möglichkeit, mit der Firma zu wachsen, und sie ist bei uns.";
+    assert.equal(textLanguage(de), "de");
+    assert.equal(analyze(de, opts).verdict, "CLOSER");
+    const en = "You will join our team at Müller und Söhne GmbH and work with the designers. Your work will shape the product and you are the owner of the design system for our customers and you will be great.";
+    assert.equal(analyze(en, opts).verdict, "CLEAR");
+    // Polish leans on one-letter words; a list without them read a Polish posting as English
+    // under the board's English menu (4 Nov 2026).
+    const pl = "Offers Salaries Companies Dołącz do nas jako Product Designer w zespole produktowym. Odpowiadasz za design produktu i jego design system, od rozmowy z użytkownikiem do widoku w Figmie. AI jest dla Ciebie narzędziem pracy, a my dajemy Ci przestrzeń. Jesteśmy firmą, która się rozwija w e-mail marketingu i pracujemy z markami na rynku.";
+    assert.equal(textLanguage(pl), "pl");
+  });
+
+  test("a required language outside the profile closes it, a nice-to-have only asks for a read", () => {
+    assert.equal(analyze("Requirements:\nFluent in Czech and English", opts).findings[0].kind, "language-required");
+    assert.equal(analyze("Requirements:\nFluent in Czech and English", opts).verdict, "CLOSER");
+    assert.equal(analyze("Fluent German is a plus.", opts).verdict, "CHECK");
+    assert.equal(analyze("Fluent English and Turkish required.", opts).verdict, "CLEAR");
+    // justjoin.it's structured language field: a code, then a level on the next line.
+    assert.equal(analyze("Tech stack\npl\nB2\nen\nB2\nFigma\nadvanced", opts).verdict, "CLOSER");
+    assert.equal(analyze("Tech stack\nen\nC1\nFigma\nadvanced", opts).verdict, "CLEAR");
+  });
+
+  test("sponsorship, clearance and a remote country list without the home country are closers, with the quote", () => {
+    const s = analyze("Great benefits.\nThe employer will not sponsor applicants for work visas.", opts);
+    assert.equal(s.verdict, "CLOSER");
+    assert.equal(s.findings.find((f) => f.kind === "sponsorship").quote, "The employer will not sponsor applicants for work visas.");
+    assert.equal(analyze("This role requires an active security clearance.", opts).verdict, "CLOSER");
+    assert.equal(analyze("Design things.", { ...opts, locations: ["United Kingdom", "Ireland", "Spain"], remote: true }).verdict, "CLOSER");
+    // The same list with the home country in it is a note, not a door.
+    const ok = analyze("Design things.", { ...opts, locations: ["Spain", "Türkiye", "Poland"], remote: true });
+    assert.equal(ok.verdict, "CLEAR");
+    assert.ok(ok.findings.some((f) => f.kind === "home-listed"));
+  });
+
+  test("residence, another country's scope and time zones ask for a read; the home country is a note", () => {
+    assert.equal(analyze("Work from anywhere in the U.S.", opts).verdict, "CHECK");
+    assert.equal(analyze("Work where you like (from within Poland).", opts).findings[0].kind, "country-scope");
+    assert.equal(analyze("Fully remote (CET).", opts).verdict, "CHECK");
+    assert.equal(analyze("You can be based in Turkey or Spain.", opts).verdict, "CLEAR");
+  });
+
+  describe("cli", () => {
+    let tmp, http;
+    beforeEach(() => {
+      tmp = makeRepo("seekter-posting-", ["seekter.mjs", "_shared.mjs", "posting.mjs"]);
+      http = fakeHttp(tmp, [
+        ["api.gem.com/job_board/v0/gemco/job_posts/", JSON.stringify([{ id: "abc123", title: "Senior UX/UI Designer", absolute_url: "https://jobs.gem.com/gemco/abc123",
+          location: { name: "Romania - Remote" }, location_type: "remote", content: "<p>Design AI features.</p>", content_plain: "Design AI features." }])],
+        ["boards-api.greenhouse.io/v1/boards/acme/jobs/111", JSON.stringify({ title: "Product Designer", location: { name: "Berlin" },
+          content: "&lt;p&gt;You design.&lt;/p&gt;&lt;p&gt;Fluent German required.&lt;/p&gt;", questions: [{ label: "Are you authorized to work in Germany?" }] })],
+      ], { status: 404, body: "" });
+    });
+    afterEach(() => fs.rmSync(tmp, { recursive: true, force: true }));
+
+    test("reads the posting from its system, saves it with the findings and quotes the closer; LinkedIn is never fetched", () => {
+      const r = runIn(tmp, "posting.mjs", ["--out", "out", "https://job-boards.greenhouse.io/acme/jobs/111", "https://www.linkedin.com/jobs/view/4001234567/"], { env: http.env });
+      assert.equal(r.rc, 0, r.err);
+      assert.match(r.out, /^CLOSER +https:\/\/job-boards\.greenhouse\.io\/acme\/jobs\/111/m);
+      assert.match(r.out, /language-required: "Fluent German required\."/);
+      assert.match(r.out, /^NOTEXT +https:\/\/www\.linkedin\.com/m);
+      assert.ok(!http.urls().some((u) => u.includes("linkedin")));
+      const saved = fs.readFileSync(path.join(tmp, "out", fs.readdirSync(path.join(tmp, "out"))[0]), "utf8");
+      assert.match(saved, /^URL https:\/\/job-boards\.greenhouse\.io\/acme\/jobs\/111/);
+      assert.match(saved, /QUESTIONS\n  - Are you authorized to work in Germany\?/);
+      assert.match(saved, /You design\./);
+    });
+
+    test("a Gem posting is read from the board API, since its page renders in the browser", () => {
+      const r = runIn(tmp, "posting.mjs", ["--out", "out", "https://jobs.gem.com/gemco/abc123"], { env: http.env });
+      assert.match(r.out, /^CLEAR +https:\/\/jobs\.gem\.com\/gemco\/abc123 +\(Romania - Remote \/ remote\)/m);
+    });
+
+    test("--file analyses text saved from elsewhere", () => {
+      fs.writeFileSync(path.join(tmp, "li.txt"), "Remote. We will not sponsor visas.");
+      const r = runIn(tmp, "posting.mjs", ["--out", "out", "--file", path.join(tmp, "li.txt"), "--url", "https://www.linkedin.com/jobs/view/4001234567/"], { env: http.env });
+      assert.match(r.out, /^CLOSER +https:\/\/www\.linkedin\.com\/jobs\/view\/4001234567\//m);
+      assert.deepEqual(http.urls(), []);
+    });
+  });
+});
+
 // ------------------------------------------------------------- the npm package
 
 describe("npx seekter init", () => {
@@ -1261,6 +1349,17 @@ describe("answer check", () => {
     assert.doesNotMatch(r.out, /"64,000"/);
     // A question and its answer are one field, so the answer after "salary expectations?" is salary.
     assert.equal(check("What are your salary expectations? -> 64000 (EUR annual).").rc, 0);
+  });
+
+  test("ordinary words do not make a sentence a salary answer (issue #84)", () => {
+    // base, net, expect, rate, pay and gross once blanked every number in their sentence.
+    const r = check("I grew the user base by 300%. I expect to cut costs by $2M. The net effect was 45 fewer tickets.");
+    assert.equal(r.rc, 1);
+    assert.match(r.out, /"300%?"/);
+    assert.match(r.out, /"2M"/);
+    assert.match(r.out, /"45"/);
+    // The pay phrases still mark a salary answer.
+    assert.equal(check("My day rate is EUR 300. Pay range: 50,000 to 60,000.").rc, 0);
   });
 
   test("banned phrases and long dashes are flagged", () => {

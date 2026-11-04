@@ -20,3 +20,14 @@ export async function live(url, net) {
   const page = await net.status(`https://jobs.${m[1] || ""}lever.co/${m[2]}/${m[3]}`);
   return page.status === 200 ? "open" : page.status === 404 ? "closed" : null;
 }
+
+// The posting itself, for scripts/posting.mjs.
+export async function posting(url, net) {
+  const m = url.match(/jobs\.(eu\.)?lever\.co\/([^/?#]+)\/([0-9a-f-]{36})/i);
+  if (!m) return null;
+  const j = await net.json(`https://api.${m[1] || ""}lever.co/v0/postings/${m[2]}/${m[3]}`);
+  if (!j || !j.text) return null;
+  const lists = (j.lists || []).map((l) => `<h3>${l.text}</h3><ul>${l.content}</ul>`).join("");
+  return { title: j.text, location: [(j.categories || {}).location, j.workplaceType].filter(Boolean).join(" / "),
+    html: `${j.description || ""}${lists}${j.additional || ""}` };
+}
