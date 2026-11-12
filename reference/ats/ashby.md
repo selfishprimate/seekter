@@ -4,8 +4,9 @@
 - **Read the form's questions before opening it.** The public board API carries the posting but not the form; the job page's own GraphQL endpoint carries both and needs no session:
   ```bash
   curl -s -X POST -H 'content-type: application/json' 'https://jobs.ashbyhq.com/api/non-user-graphql?op=ApiJobPosting' \
-    -d '{"operationName":"ApiJobPosting","variables":{"organizationHostedJobsPageName":"<co>","jobPostingId":"<uuid>"},"query":"query ApiJobPosting($organizationHostedJobsPageName: String!, $jobPostingId: String!) { jobPosting(organizationHostedJobsPageName: $organizationHostedJobsPageName, jobPostingId: $jobPostingId) { title locationName workplaceType applicationForm { sections { fieldEntries { ... on FormFieldEntry { isRequired field } } } } } }"}'
+    -d '{"operationName":"ApiJobPosting","variables":{"organizationHostedJobsPageName":"<co>","jobPostingId":"<uuid>"},"query":"query ApiJobPosting($organizationHostedJobsPageName: String!, $jobPostingId: String!) { jobPosting(organizationHostedJobsPageName: $organizationHostedJobsPageName, jobPostingId: $jobPostingId) { title applicationForm { sections { fieldEntries { ... on FormFieldEntry { isRequired field } } } } } }"}'
   ```
+  **Ask for `title` and `applicationForm` only.** Measured 12 Nov 2026 on three tenants: adding `locationName workplaceType` to the selection made `jobPosting` come back `null` with HTTP 200, which reads exactly like a wrong slug or a closed posting. Take the location from the public board API instead. An organization name with spaces (`Superhuman Platform Inc`) works as the slug as it stands, URL-encoded in links.
   Each `field` has `title`, `type` and `selectableValues`. Measured 6 Oct on five tenants: it showed which relocation forms carry a visa-sponsorship option (one did, two did not), a hard requirement written into a Boolean question, and team-size questions that are never-guess, all before a tab was opened.
 - **Core problem:** DOM value and React state diverge unpredictably → "Missing entry for required field: X" on fields that look filled.
 - **Set values (text/textarea) — default:**
