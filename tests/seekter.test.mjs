@@ -1123,6 +1123,12 @@ describe("posting read", () => {
     // under the board's English menu (4 Nov 2026).
     const pl = "Offers Salaries Companies Dołącz do nas jako Product Designer w zespole produktowym. Odpowiadasz za design produktu i jego design system, od rozmowy z użytkownikiem do widoku w Figmie. AI jest dla Ciebie narzędziem pracy, a my dajemy Ci przestrzeń. Jesteśmy firmą, która się rozwija w e-mail marketingu i pracujemy z markami na rynku.";
     assert.equal(textLanguage(pl), "pl");
+    // A Ukrainian posting on an English Ashby page came back CLEAR (5 Nov 2026): no Cyrillic list.
+    const uk = "RiseGuide – це застосунок для тих, хто хоче стати найкращою версією себе. Ми будуємо продукт, і ти будеш вести великі продуктові ставки та запускати A/B-тести. Також ти працюватимеш з PM та інженерами, які формують гіпотези, або допомагатимеш команді як дизайнер.";
+    assert.equal(textLanguage(uk), "uk");
+    assert.equal(analyze(uk, opts).verdict, "CLOSER");
+    const ru = "Мы ищем дизайнера, который будет работать с командой. Это продукт, и ты будешь отвечать за интерфейс, что очень важно. Также вы будете общаться с инженерами, которые строят систему, или с менеджерами, как и мы.";
+    assert.equal(textLanguage(ru), "ru");
   });
 
   test("a required language outside the profile closes it, a nice-to-have only asks for a read", () => {
