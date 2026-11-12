@@ -126,3 +126,16 @@ First measured 23 Oct 2026. No account. The LinkedIn apply link is a redirect th
 - A recruitment agency's job page with the form underneath, no account. Measured 4 Nov 2026: first name, last name, email, phone (`name` attributes `firstName`, `lastName`, `email`, `phoneNumber`; the native setter takes them and the phone is reformatted to spaced international format), a LinkedIn field that keeps a fixed `linkedin.com/in/` prefix (type only the handle), an optional Location button that opens a modal with a place search (pick the suggestion, then press the modal's confirm button), résumé and cover-letter file inputs (`find` + `file_upload`).
 - **The form ends with a required "I certify that all information provided is accurate" checkbox.** It is a declaration, so it goes to the candidate with Submit, the same way the other required declarations do.
 
+
+## Recooty (`careerspage.io/<company>/<job-slug>`, "Apply for this role" → `/apply`)
+
+- No account. Measured 11 Nov 2026 on one employer: the form opens with only a Resume dropzone. Uploading the CV reveals First Name, Last Name, Email and Mobile Number already filled from the parse ("Details prefilled — please review below"); read them back before going on.
+- **A visible reCAPTCHA v2 checkbox sits above "Submit application"**, so the form always ends with the candidate. Fill it, leave the tab, hand it over.
+
+## GlobalLogic (`globallogic.com/careers/<slug>/`)
+
+- The form is inline at the bottom of the posting, no account. Measured 11 Nov 2026: First Name, Last Name, Email, Phone, Gender (required native select), Country of Residence, City, "How did you hear about this job?", a resume file input (hidden, `.doc,.docx,.pdf,.rtf`) and LinkedIn URL.
+- **Country of Residence is a Bootstrap selectpicker.** Setting the native `<select>` value leaves the visible control empty; `jQuery('[name=jobCountry]').selectpicker('val','<option text>')` updates both. The home country may be spelled natively in the list ("Turkiye").
+- **A visible reCAPTCHA v2 checkbox comes before the submit arrow**, so this form is always a hand-off.
+- **The first submit can fail even after the candidate ticks the reCAPTCHA; a second try went through.** Measured 11 Nov 2026: the first submit left the form emptied with no message; the candidate filled and submitted again and landed on `/career-thank-you/`. Tell the candidate to retry before giving up on it.
+- A posting's page carries the company's office list in its navigation, so a script that greps the page for the home country finds it there. Read the posting's own "Location" field (a single country) instead.
