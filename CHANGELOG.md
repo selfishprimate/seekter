@@ -4,6 +4,62 @@ The version is the git tag; there is no version file. Each release is also on
 [the releases page](https://github.com/selfishprimate/seekter/releases) with the
 same text.
 
+## v0.16.1 — 12 November 2026
+
+Two of 0.16.0's checks could send a run the wrong way without saying so, and
+Ashby's form query in the notes came back empty. **Update if you use
+`posting.mjs` or `live.mjs`:** both failures look like a good result.
+
+### A Ukrainian posting came back CLEAR
+
+`posting.mjs` guesses a posting's language from common words, and it had no
+list for Cyrillic. Measured 5 Nov 2026: a posting written in Ukrainian on an
+English Ashby page came back `CLEAR`, so a role that needs Ukrainian looked
+open to anyone. Ukrainian and Russian now have their own lists, built from the
+words the two spell differently, so a posting in either language closes the
+door the way German or Polish already did.
+
+### An expired Teamtailor ad read as OPEN
+
+`live.mjs` took a 404 as Teamtailor's only sign of a closed posting. Measured
+6 Nov 2026: an expired ad keeps answering 200 and says "This position is no
+longer active" on the page, so the check called it `OPEN` and a run could fill
+a form for a role that was gone. A 200 is now read for that sentence.
+
+### Ashby's form query returned null
+
+The note in `reference/ats/ashby.md` shows how to read a form's questions
+before opening it. Measured 12 Nov 2026 on three tenants: its query also asked
+for `locationName` and `workplaceType`, and with those in it `jobPosting` came
+back `null` with HTTP 200, which reads exactly like a wrong slug or a closed
+posting. The example now asks for `title` and `applicationForm` only.
+
+### Fields that look filled and are not
+
+- **Ashby:** a "When can you start?" text input can be a calendar; a sentence
+  typed into it fails as a missing entry.
+- **Greenhouse:** a select picked with the usual helper can show its value and
+  still submit empty. Picking it by keyboard registers it.
+- **Rippling:** the resume parse pre-answers the SMS consent and Current
+  company and can cut a first name to its first word.
+- **Teamtailor:** a phone picker opened on the employer's country turns a
+  national number into a foreign one; type the full international number.
+- **Recooty** and **GlobalLogic** are written down; both end on a reCAPTCHA.
+
+### Two sources and an Easy Apply card
+
+- An **Easy Apply** card can hide the employer's own form: one role went from
+  fit 3 on the LinkedIn card to fit 5 on the employer's Greenhouse board and was
+  sent there. The run now looks for the employer's board before listing it.
+- **freehire**'s arc.dev records are LinkedIn postings (17 of 37 candidates on
+  5 Nov 2026); dedup them on the LinkedIn id.
+- **Jobicy** tags with a space work, but match loosely; filter on the title.
+
+### Upgrading
+
+Nothing to migrate. Your `profile/`, `applications/` and `runs/` are
+git-ignored and untouched.
+
 ## v0.16.0 — 4 November 2026
 
 Postings are now read by a script instead of into the conversation, Gem joins
