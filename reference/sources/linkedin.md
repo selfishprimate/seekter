@@ -135,3 +135,5 @@ const url=(am['com.linkedin.voyager.jobs.OffsiteApply']||{}).companyApplyUrl||''
 ## Easy Apply
 
 Listed, never filled, in both modes. The report gives each one's LinkedIn URL and the CV to pick, and the user sends them.
+
+**Before listing an Easy Apply posting, look for the same role on the employer's own board.** An empty `companyApplyUrl` only says how LinkedIn takes the application, not that the employer has no form of its own. When the job page's URL carries `applicantTrackingSystemName=Greenhouse` (or another ATS), LinkedIn is feeding that ATS, and the employer usually publishes the same posting there. Measured 5 Nov 2026: ESW's "Senior Product Design Engineer" was listed as Easy Apply at fit 3 from the alert card alone; `boards-api.greenhouse.io/v1/boards/esw/jobs` held the identical role, whose full posting read as fit 5 and which was submitted as a company form the same day. Probe the board API (tenant = the company's slug) before writing the Easy Apply list, and fill the company form instead when it exists.

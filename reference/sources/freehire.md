@@ -29,6 +29,7 @@ Per-record fields worth using:
 - `closed_at` → drop if set.
 - `reality` → `{class: fresh|stale, age_days, repost_count, mass_posting_count, fake_freshness}`. `mass_posting_count ≥ 3` is the "one text republished under many titles" pattern (EWOR: 10+ variants, every apply URL 404). Push these to the end or skip; a legitimate multi-team hire can also trip it, so check before discarding.
 - `url` → the apply link. It can be the employer's ATS, **another aggregator (Adzuna seen as the top result)**, or a Telegram post (`t.me/...`, skip: no messaging on the user's behalf). Resolve to the real employer before applying.
+- **`arc.dev/remote-jobs/j/…` records are LinkedIn postings.** Measured 5 Nov 2026: 17 of a day's 37 candidates came through arc.dev, and every one resolved to a LinkedIn job. The page carries the source in its embedded JSON as `"url":"https://<cc>.linkedin.com/jobs/view/<slug>-<id>"` (fetch with a browser user agent and take the first `"url"` that is not arc.dev). Dedup on `https://www.linkedin.com/jobs/view/<id>/`, not on the arc.dev link, and read them in the LinkedIn step: through a detail request in `read` mode, or as unresolved leads in `email` mode. Five of the 17 were already in the tracker under their LinkedIn id.
 
 Pitfalls:
 - The API returns **403 to Python's default user agent**. curl and Node `fetch` pass. Always send an explicit `User-Agent`.

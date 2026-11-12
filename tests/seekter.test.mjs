@@ -1010,6 +1010,8 @@ describe("live check", () => {
       ["jobs.ashbyhq.com/acme/22222222-2222-2222-2222-222222222222", { status: 200, body: 'x "posting":null x' }],
       ["jobs.acme.example/jobs.rss", '<?xml version="1.0"?><rss version="2.0"></rss>'],
       ["jobs.acme.example/jobs/9-gone", { status: 404, body: "" }],
+      ["jobs.acme.example/jobs/8-expired", { status: 200, body: "<h1>This position is no longer active</h1>" }],
+      ["jobs.acme.example/jobs/7-live", { status: 200, body: "<h1>Senior Product Designer</h1><a>Apply for this job</a>" }],
       ["careers.other.example/jobs/9-gone", { status: 404, body: "" }],
     ], { status: 500, body: "" });
   });
@@ -1020,6 +1022,7 @@ describe("live check", () => {
       "https://job-boards.greenhouse.io/acme/jobs/111", "https://job-boards.greenhouse.io/acme/jobs/222",
       "https://jobs.ashbyhq.com/acme/11111111-1111-1111-1111-111111111111", "https://jobs.ashbyhq.com/acme/22222222-2222-2222-2222-222222222222",
       "https://jobs.acme.example/jobs/9-gone", "https://careers.other.example/jobs/9-gone",
+      "https://jobs.acme.example/jobs/8-expired", "https://jobs.acme.example/jobs/7-live",
       "https://www.linkedin.com/jobs/view/4001234567/"], { env: http.env });
     assert.equal(r.rc, 0, r.err);
     assert.match(r.out, /^OPEN +https:\/\/job-boards\.greenhouse\.io\/acme\/jobs\/111 +\(greenhouse\)/m);
@@ -1027,6 +1030,9 @@ describe("live check", () => {
     assert.match(r.out, /^OPEN +https:\/\/jobs\.ashbyhq\.com\/acme\/1111/m);
     assert.match(r.out, /^CLOSED +https:\/\/jobs\.ashbyhq\.com\/acme\/2222/m);
     assert.match(r.out, /^CLOSED +https:\/\/jobs\.acme\.example\/jobs\/9-gone +\(teamtailor\)/m);
+    // An expired Teamtailor ad still answers 200; the page text is what says so (6 Nov 2026).
+    assert.match(r.out, /^CLOSED +https:\/\/jobs\.acme\.example\/jobs\/8-expired/m);
+    assert.match(r.out, /^OPEN +https:\/\/jobs\.acme\.example\/jobs\/7-live/m);
     // A 404 on a site that is not Teamtailor says nothing, so it stays unknown.
     assert.match(r.out, /^UNKNOWN +https:\/\/careers\.other\.example/m);
     assert.match(r.out, /^UNKNOWN +https:\/\/www\.linkedin\.com.*never called/m);
@@ -1123,6 +1129,12 @@ describe("posting read", () => {
     // under the board's English menu (4 Nov 2026).
     const pl = "Offers Salaries Companies Dołącz do nas jako Product Designer w zespole produktowym. Odpowiadasz za design produktu i jego design system, od rozmowy z użytkownikiem do widoku w Figmie. AI jest dla Ciebie narzędziem pracy, a my dajemy Ci przestrzeń. Jesteśmy firmą, która się rozwija w e-mail marketingu i pracujemy z markami na rynku.";
     assert.equal(textLanguage(pl), "pl");
+    // A Ukrainian posting on an English Ashby page came back CLEAR (5 Nov 2026): no Cyrillic list.
+    const uk = "RiseGuide – це застосунок для тих, хто хоче стати найкращою версією себе. Ми будуємо продукт, і ти будеш вести великі продуктові ставки та запускати A/B-тести. Також ти працюватимеш з PM та інженерами, які формують гіпотези, або допомагатимеш команді як дизайнер.";
+    assert.equal(textLanguage(uk), "uk");
+    assert.equal(analyze(uk, opts).verdict, "CLOSER");
+    const ru = "Мы ищем дизайнера, который будет работать с командой. Это продукт, и ты будешь отвечать за интерфейс, что очень важно. Также вы будете общаться с инженерами, которые строят систему, или с менеджерами, как и мы.";
+    assert.equal(textLanguage(ru), "ru");
   });
 
   test("a required language outside the profile closes it, a nice-to-have only asks for a read", () => {

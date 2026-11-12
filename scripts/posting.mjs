@@ -64,6 +64,9 @@ const STOP = {
   fi: ["ja", "on", "että", "se", "ovat", "kanssa", "tai", "meidän", "sinä"],
   cs: ["se", "na", "je", "pro", "že", "ve", "jsme", "nebo", "práce"],
   hu: ["és", "az", "hogy", "egy", "nem", "van", "csapat", "valamint", "számára"],
+  // Cyrillic: only the words the two languages spell differently, so each one counts for one.
+  uk: ["і", "та", "що", "це", "як", "або", "також", "ти", "ми", "які", "твої", "наш"],
+  ru: ["и", "что", "это", "как", "или", "также", "ты", "мы", "которые", "твои", "наш", "вы"],
 };
 
 export function textLanguage(text) {

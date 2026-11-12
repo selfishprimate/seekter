@@ -94,6 +94,7 @@
   - Company forms built on Greenhouse (e.g. Miro) may have server-side char limits with no counter (900) and strict phone format: the field's own placeholder shows the shape it wants, which is E.164 with no spaces and no punctuation, so send `<PHONE_E164>`.
   - "How did you hear" with only company channels, no "other" → hand over.
   - `find` may return options unnamed — list texts via JS first.
+- **A select picked with `PICKOPT` can show its value and still be empty.** Measured 5 Nov 2026 (ESW, a one-option "Candidate Privacy Notice") and again 6 Nov 2026 (Financial Times, a 17-option currency list): `PICKOPT` rendered the choice in `singleValue`, yet submit failed with "This field is required." on that field alone. Focusing the input, typing the start of the option and pressing `Return` registered it, and the next submit went through. It is not limited to one-option lists, and it hit one select out of seven on the same form. When a submit fails on a select that reads as filled, re-pick it by keyboard before anything else; for a required consent select, pick it by keyboard from the start.
 - **Submit:** if only stale phone errors remain, submit again. Confirm the thank-you page.
 
 `okta.com/company/careers/<slug>` is not a Greenhouse board: it is Drupal hosting the Greenhouse questions, so the field ids are `edit-*` and `edit-question-<id>` rather than Greenhouse's own. Plain `<select>` elements with option values `1`/`0` for Yes/No, so the native setter plus a `change` event works; no react-select anywhere.
